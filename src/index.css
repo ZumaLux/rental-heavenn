@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap");
+
+:root {
+  /*Fonts*/
+  /* --font-family: "Rubik", sans-serif; */
+  --font-family: "Roboto", sans-serif;
+
+  /*Colors*/
+  --dark-blue: #282634;
+  --light-blue: #bad7e9;
+  --blue-v1: #92c5e6;
+  --red: #ff4057;
+  --orange: rgb(240, 179, 65);
+  --dirty-white: rgb(236, 236, 236);
+  /* --body-color: rgb(255, 255, 255); */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+}
+html {
+}
+#root {
+}
