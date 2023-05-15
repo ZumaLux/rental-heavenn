@@ -99,9 +99,7 @@ const Cars = () => {
           />
         </div>
         <div className="cars-grid__content">
-          {sortedItems.map((car) => (
-            <CarCard key={car.id} {...car} />
-          ))}
+          {sortedItems && sortedItems.map((car) => <CarCard key={car.id} {...car} />)}
         </div>
       </section>
     </div>
