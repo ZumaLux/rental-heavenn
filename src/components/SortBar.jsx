@@ -15,9 +15,11 @@ const SortBar = ({ sortOptions, sortValue, setSortValue }) => {
                 value={opt.toLocaleLowerCase() + " ascending"}
                 onClick={(e) => e.target.value}
               >
-                {opt} Ascending
+                {opt.split(" ")[0]} Ascending
               </option>
-              <option value={opt.toLocaleLowerCase() + " descending"}>{opt} Descending</option>
+              <option value={opt.toLocaleLowerCase() + " descending"}>
+                {opt.split(" ")[0]} Descending
+              </option>
             </optgroup>
           ))}
       </select>

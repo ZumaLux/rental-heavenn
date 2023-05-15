@@ -13,21 +13,21 @@ export const searchItems = (query, data) => {
 // Sorting data
 export const sortItems = (orderBy, data) => {
   if (orderBy === "default") return data;
-  else if (orderBy.split(" ")[1].includes("ascending")) {
+  else if (orderBy.includes("ascending")) {
     return [
       ...data.sort(function (a, b) {
         return (
-          cmp(b[orderBy.split(" ")[1]], a[orderBy.split(" ")[1]]) ||
-          cmp(b[orderBy.split(" ")[2]], a[orderBy.split(" ")[2]])
+          cmp(a[orderBy.split(" ")[0]], b[orderBy.split(" ")[0]]) ||
+          cmp(a[orderBy.split(" ")[1]], b[orderBy.split(" ")[1]])
         );
       }),
     ];
-  } else if (orderBy.split(" ")[1].includes("descending")) {
+  } else if (orderBy.includes("descending")) {
     return [
       ...data.sort(function (a, b) {
         return (
-          cmp(a[orderBy.split(" ")[1]], b[orderBy.split(" ")[1]]) ||
-          cmp(a[orderBy.split(" ")[2]], b[orderBy.split(" ")[2]])
+          cmp(b[orderBy.split(" ")[0]], a[orderBy.split(" ")[0]]) ||
+          cmp(b[orderBy.split(" ")[1]], a[orderBy.split(" ")[1]])
         );
       }),
     ];

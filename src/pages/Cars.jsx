@@ -7,6 +7,7 @@ import FilterBar from "../components/SortBar";
 import { searchItems, sortItems } from "../functions/sortAndSearch";
 import useSessionStorage from "../hooks/useSessionStorage";
 
+// use it while developing
 const dbElements = [
   {
     id: 1,
@@ -82,18 +83,13 @@ const Cars = () => {
   const searchedItems = searchItems(searchQuery, dbElements);
   const sortedItems = sortItems(sortValue, searchedItems);
 
-  useEffect(() => {
-    console.log("so: ", sortedItems);
-    // console.log("se: ", searchedItems);
-  }, [sortedItems, searchedItems, sortValue]);
-
   return (
     <div className="page-container">
       <section className="cars-grid">
         <div className="cars-nav">
           <SearchBar setSearchQuery={(value) => setSearchQuery(value)} />
           <FilterBar
-            sortOptions={["Brand", "Price", "Year", "Discount"]}
+            sortOptions={["Brand Model", "Price Brand", "Year Brand", "Discount Brand"]}
             sortValue={sortValue}
             setSortValue={(value) => setSortValue(value)}
           />
