@@ -12,7 +12,7 @@ export const searchItems = (query, data) => {
 
 // Sorting data
 export const sortItems = (orderBy, data) => {
-  if (orderBy === "default") return;
+  if (orderBy === "default") return data;
   else if (orderBy.split(" ")[1].includes("ascending")) {
     return [
       ...data.sort(function (a, b) {
