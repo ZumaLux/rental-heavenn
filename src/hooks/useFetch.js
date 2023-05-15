@@ -11,7 +11,7 @@ const useFetch = (colName) => {
       try {
         const dataList = await getDocs(collectionRef);
         const newData = [];
-        dataList.docs.map((item) => newData.push(item.data()));
+        dataList.docs.map((item) => newData.push({ ...item.data(), id: item.id }));
         setData(newData);
         console.log(dataList.docs[0].data());
       } catch (error) {
