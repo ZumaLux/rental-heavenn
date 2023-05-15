@@ -1,0 +1,15 @@
+.filter-bar {
+  width: 200px;
+  height: 2rem;
+  display: flex;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: white;
+  margin: 0rem 2rem;
+}
+
+select {
+  width: 100%;
+  border: 1px solid white;
+  padding-left: 1rem;
+}

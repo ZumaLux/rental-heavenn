@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./CarCard.css";
 
-const CarCard = ({ id, brand, model, fuel, year, seats, img, price, discount, discPrice }) => {
+const CarCard = ({ id, brand, model, fuel, year, seats, img, price, discount, discountPrice }) => {
   return (
     <Link className="car-card-link" to={`/cars/${id}`}>
       <div className="car-card">
@@ -19,8 +19,8 @@ const CarCard = ({ id, brand, model, fuel, year, seats, img, price, discount, di
             {brand}&nbsp; {model}
           </span>
           <div className="car-card__price">
-            {discount > 0 && <span>${discPrice} </span>}
-            <s>${price} </s> &ensp;
+            {discount ? <s>${price} </s> : <span>${price}</span>}
+            {discount > 0 && <span>&ensp; ${discountPrice} </span>}
           </div>
         </div>
         {discount > 0 && (

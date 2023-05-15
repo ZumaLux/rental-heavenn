@@ -1,14 +1,16 @@
 .car-card {
   height: 25rem;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  /* background-color: rgb(126, 41, 41); */
   background: var(--dirty-white);
   border-radius: 0.5rem;
   box-shadow: 1px 1px 3px;
   font-family: var(--font-family);
   position: relative;
   cursor: pointer;
+  text-align: center;
+  margin: auto;
 }
 .car-card:hover {
   scale: 1.02;
@@ -79,6 +81,7 @@
   display: block;
   font-weight: bold;
   color: black;
+  text-align: center;
 }
 
 .car-card__price {
@@ -89,6 +92,9 @@
   text-align: center;
   margin: 1rem 0;
   padding: 0.3rem;
+}
+.car-card__price s {
+  color: red;
 }
 
 @media screen and (max-width: 820px) {
