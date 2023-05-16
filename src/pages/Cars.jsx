@@ -81,7 +81,7 @@ const Cars = () => {
   // const { data } = useFetch("cars");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
-  const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", "default");
+  const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
 
   const itemsPerPage = 1;
   const searchedItems = searchItems(searchQuery, dbElements);
