@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import "./Cars.css";
 import useFetch from "../hooks/useFetch";
 import CarCard from "../components/CarCard";
@@ -6,6 +6,8 @@ import SearchBar from "../components/SearchBar";
 import FilterBar from "../components/SortBar";
 import { searchItems, sortItems } from "../functions/sortAndSearch";
 import useSessionStorage from "../hooks/useSessionStorage";
+import Pagination from "../components/Pagination";
+import { sliceData } from "../functions/sliceData";
 
 // use it while developing
 const dbElements = [
@@ -79,9 +81,12 @@ const Cars = () => {
   // const { data } = useFetch("cars");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
+  const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", "default");
 
+  const itemsPerPage = 1;
   const searchedItems = searchItems(searchQuery, dbElements);
   const sortedItems = sortItems(sortValue, searchedItems);
+  const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);
 
   return (
     <div className="page-container">
@@ -95,7 +100,15 @@ const Cars = () => {
           />
         </div>
         <div className="cars-grid__content">
-          {sortedItems && sortedItems.map((car) => <CarCard key={car.id} {...car} />)}
+          {slicedData && slicedData.map((car) => <CarCard key={car.id} {...car} />)}
+        </div>
+        <div className="pagination-container">
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={sortedItems.length}
+            currentPage={currentPage}
+            setCurrentPage={(value) => setCurrentPage(value)}
+          />
         </div>
       </section>
     </div>

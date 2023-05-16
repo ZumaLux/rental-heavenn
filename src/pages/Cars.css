@@ -4,6 +4,7 @@
 
 .cars-grid {
   background: var(--light-blue);
+  height: 100vh;
   padding: 1rem 3rem;
 }
 
@@ -75,6 +76,13 @@
   );
   grid-gap: var(--grid-layout-gap);
   text-align: center;
+}
+
+.pagination-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 820px) {

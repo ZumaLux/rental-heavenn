@@ -4,6 +4,7 @@ import Cars from "./pages/Cars";
 import Home from "./pages/Home";
 import Navbar from "./layouts/navbar/Navbar";
 import SingleCar from "./pages/SingleCar";
+import Footer from "./layouts/footer/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/:id" element={<SingleCar />} />
       </Routes>
+      <Footer />
     </>
   );
 }

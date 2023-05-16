@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1rem;
+  border-top: 1px solid white;
+  flex-wrap: wrap;
+  font-family: var(--font-family);
+}
+
+.pagination button {
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.1rem;
+  background-color: var(--dirty-white);
+  border: 1px solid rgb(146, 146, 146);
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: var(--orange);
+}
+
+.pagination button:hover:not(.active) {
+  background-color: rgb(201, 201, 201);
+}
