@@ -3,7 +3,7 @@ import "./Cars.css";
 import useFetch from "../hooks/useFetch";
 import CarCard from "../components/CarCard";
 import SearchBar from "../components/SearchBar";
-import FilterBar from "../components/SortBar";
+import SortBar from "../components/SortBar";
 import { searchItems, sortItems } from "../functions/sortAndSearch";
 import useSessionStorage from "../hooks/useSessionStorage";
 import Pagination from "../components/Pagination";
@@ -83,7 +83,7 @@ const Cars = () => {
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
 
-  const itemsPerPage = 1;
+  const itemsPerPage = 5;
   const searchedItems = searchItems(searchQuery, dbElements);
   const sortedItems = sortItems(sortValue, searchedItems);
   const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);
@@ -92,12 +92,16 @@ const Cars = () => {
     <div className="page-container">
       <section className="cars-grid">
         <div className="cars-nav">
-          <SearchBar setSearchQuery={(value) => setSearchQuery(value)} />
-          <FilterBar
-            sortOptions={["Brand Model", "Price Brand", "Year Brand", "Discount Brand"]}
-            sortValue={sortValue}
-            setSortValue={(value) => setSortValue(value)}
-          />
+          <div className="cars-nav__search">
+            <SearchBar setSearchQuery={(value) => setSearchQuery(value)} />
+          </div>
+          <div className="cars-nav__sort">
+            <SortBar
+              sortOptions={["Brand Model", "Price Brand", "Year Brand", "Discount Brand"]}
+              sortValue={sortValue}
+              setSortValue={(value) => setSortValue(value)}
+            />
+          </div>
         </div>
         <div className="cars-grid__content">
           {slicedData && slicedData.map((car) => <CarCard key={car.id} {...car} />)}

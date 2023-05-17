@@ -1,11 +1,10 @@
 .filter-bar {
-  width: 200px;
+  width: 100%;
   height: 2rem;
   display: flex;
   border-radius: 1rem;
   overflow: hidden;
   background: white;
-  margin: 0rem 2rem;
 }
 
 select {

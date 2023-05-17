@@ -1,10 +1,10 @@
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 1rem;
   margin: 1rem;
   border-top: 1px solid white;
-  flex-wrap: wrap;
   font-family: var(--font-family);
 }
 
