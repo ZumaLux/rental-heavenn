@@ -19,9 +19,9 @@ const RegisterForm = () => {
       phone: e.target.phone.value,
       permissons: "user",
     };
-    const registereResult = await registerUser(e.target.email.value, e.target.password.value);
-    if (registereResult) {
-      createUserDetails("users", user, registereResult.uid);
+    const registerResult = await registerUser(e.target.email.value, e.target.password.value);
+    if (registerResult) {
+      createUserDetails("users", user, registerResult.uid);
       navigate("/");
     }
   };

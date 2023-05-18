@@ -15,15 +15,24 @@ export const registerUser = async (email, password) => {
 };
 
 // LOGIN USER -FIREBASE-
-export const loginUser = () => {};
+export const loginUser = async (email, password) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    console.log("Login successfull");
+    return true;
+  } catch (err) {
+    console.log(err);
+  }
+  return false;
+};
 
-//SIGN OUT USER
+//SIGN OUT USER -FIREBASE-
 export async function signOutUser() {
   await signOut(auth);
   console.log("Signed Out!");
 }
 
-// CREATE USER DETAILS
+// CREATE USER DETAILS -FIREBASE-
 export async function createUserDetails(path, user, uid) {
   try {
     await setDoc(doc(db, path, uid), { ...user });

@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 export const FormContext = createContext();
 
-export const FormProvider = ({ children }) => {
+const FormProvider = ({ children }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(true);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
@@ -24,3 +24,4 @@ export const FormProvider = ({ children }) => {
 };
 
 export const useFormContext = () => useContext(FormContext);
+export default FormProvider; // wrapper
