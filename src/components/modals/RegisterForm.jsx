@@ -5,6 +5,7 @@ import { FaGithub as GithubIcon } from "react-icons/fa";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { createUserDetails, registerUser } from "../../firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { collection_users } from "../../firebase/variables";
 
 const RegisterForm = () => {
   const { isRegisterOpen, closeRegister } = useFormContext();
@@ -21,7 +22,7 @@ const RegisterForm = () => {
     };
     const registerResult = await registerUser(e.target.email.value, e.target.password.value);
     if (registerResult) {
-      createUserDetails("users", user, registerResult.uid);
+      createUserDetails(collection_users, user, registerResult.uid);
       navigate("/");
     }
   };

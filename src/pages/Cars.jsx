@@ -8,6 +8,7 @@ import { searchItems, sortItems } from "../functions/sortAndSearch";
 import useSessionStorage from "../hooks/useSessionStorage";
 import Pagination from "../components/Pagination";
 import { sliceData } from "../functions/sliceData";
+import { collection_cars } from "../firebase/variables";
 
 // use it while developing
 const dbElements = [
@@ -78,7 +79,7 @@ const dbElements = [
 ];
 
 const Cars = () => {
-  // const { data } = useFetch("cars");
+  // const { data } = useFetch(collection_cars);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
