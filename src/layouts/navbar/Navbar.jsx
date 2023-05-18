@@ -24,7 +24,7 @@ const Navbar = () => {
               <Link to="/customers">Customers</Link>
               <Link to="/rentals">Rentals</Link>
             </>
-            <Link to="/signIn">Sign In</Link>
+            <Link to="/auth">Sign In</Link>
           </div>
           <div className="burgir-menu" onClick={() => setNavActive((prev) => !prev)}>
             {navActive ? <BurgirClose /> : <BurgirIcon />}

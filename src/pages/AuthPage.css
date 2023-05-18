@@ -1,0 +1,119 @@
+.auth-page {
+  display: flex;
+  height: 100vh;
+  font-family: var(--font-family);
+}
+
+.form-container {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  animation-name: left;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.img-container {
+  flex: 1;
+  background-color: black;
+  transition: 1s;
+  background-image: url(../assets/wallpaper-cave-red-car.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.animation {
+  animation-name: move;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+.a1 {
+  animation-delay: 2s;
+}
+.a2 {
+  animation-delay: 2.1s;
+}
+.a3 {
+  animation-delay: 2.2s;
+}
+.a4 {
+  animation-delay: 2.3s;
+}
+.a5 {
+  animation-delay: 2.4s;
+}
+.a6 {
+  animation-delay: 2.5s;
+}
+.a7 {
+  animation-delay: 2.6s;
+}
+.a8 {
+  animation-delay: 2.7s;
+}
+.a9 {
+  animation-delay: 2.8s;
+}
+.a10 {
+  animation-delay: 2.9s;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes left {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    padding: 20px 40px;
+    width: 440px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .auth-page {
+    position: relative;
+    font-size: 0.9rem;
+  }
+  .auth-page .form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+  }
+  @keyframes left {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+
+    100% {
+      opacity: 1;
+      padding: 20px 40px;
+      width: 100%;
+    }
+  }
+}

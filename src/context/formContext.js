@@ -1,0 +1,26 @@
+import React, { createContext, useContext, useState } from "react";
+
+export const FormContext = createContext();
+
+export const FormProvider = ({ children }) => {
+  const [isLoginOpen, setIsLoginOpen] = useState(true);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const closeLogin = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(true);
+  };
+
+  const closeRegister = () => {
+    setIsLoginOpen(true);
+    setIsRegisterOpen(false);
+  };
+
+  return (
+    <FormContext.Provider value={{ isLoginOpen, isRegisterOpen, closeLogin, closeRegister }}>
+      {children}
+    </FormContext.Provider>
+  );
+};
+
+export const useFormContext = () => useContext(FormContext);
