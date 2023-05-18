@@ -8,7 +8,6 @@ import { searchItems, sortItems } from "../functions/sortAndSearch";
 import useSessionStorage from "../hooks/useSessionStorage";
 import Pagination from "../components/Pagination";
 import { sliceData } from "../functions/sliceData";
-import LoginForm from "../components/modals/LoginForm";
 
 // use it while developing
 const dbElements = [
@@ -115,7 +114,6 @@ const Cars = () => {
             setCurrentPage={(value) => setCurrentPage(value)}
           />
         </div>
-        <LoginForm />
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AuthForm from "./AuthForm";
 import { useFormContext } from "../../context/formContext";
 import { FaGithub as GithubIcon } from "react-icons/fa";
@@ -6,8 +6,10 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 
 const LoginForm = () => {
   const { isLoginOpen, closeLogin } = useFormContext();
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const toggleForm = () => {
+    setIsFirstRender(false);
     closeLogin();
   };
 
@@ -40,6 +42,7 @@ const LoginForm = () => {
       footer={footerContent}
       buttonText="LOGIN"
       isOpen={isLoginOpen}
+      firstRender={isFirstRender}
     />
   );
 };

@@ -28,6 +28,7 @@
   background-position: center;
 }
 
+/* Whole form */
 .animation {
   animation-name: move;
   animation-duration: 0.4s;
@@ -35,37 +36,27 @@
   animation-delay: 2s;
 }
 
+/* Separate items */
 .a1 {
-  animation-delay: 2s;
+  animation-delay: 1.4s;
 }
 .a2 {
-  animation-delay: 2.1s;
+  animation-delay: 1.5s;
 }
 .a3 {
-  animation-delay: 2.2s;
+  animation-delay: 1.6s;
 }
 .a4 {
-  animation-delay: 2.3s;
+  animation-delay: 1.7s;
 }
 .a5 {
-  animation-delay: 2.4s;
+  animation-delay: 1.8s;
 }
 .a6 {
-  animation-delay: 2.5s;
-}
-.a7 {
-  animation-delay: 2.6s;
-}
-.a8 {
-  animation-delay: 2.7s;
-}
-.a9 {
-  animation-delay: 2.8s;
-}
-.a10 {
-  animation-delay: 2.9s;
+  animation-delay: 1.9s;
 }
 
+/*  Separate items */
 @keyframes move {
   0% {
     opacity: 0;
@@ -80,6 +71,7 @@
   }
 }
 
+/* Whole form */
 @keyframes left {
   0% {
     opacity: 0;
@@ -88,12 +80,15 @@
 
   100% {
     opacity: 1;
-    padding: 20px 40px;
+    /* padding: 20px 40px; */
     width: 440px;
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 640px) {
+}
+
+@media screen and (max-width: 640px) {
   .auth-page {
     position: relative;
     font-size: 0.9rem;
@@ -103,6 +98,7 @@
     top: 0;
     left: 0;
     height: 100vh;
+    padding: 20px 40px;
   }
   @keyframes left {
     0% {
@@ -112,7 +108,6 @@
 
     100% {
       opacity: 1;
-      padding: 20px 40px;
       width: 100%;
     }
   }

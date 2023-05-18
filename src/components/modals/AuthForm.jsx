@@ -7,17 +7,21 @@ const AuthForm = ({
   body = React.Element,
   footer = React.Element,
   buttonText = "",
-  isOpen,
+  isOpen = Boolean,
+  submitAction = () => {},
+  firstRender = Boolean,
 }) => {
   if (!isOpen) return null;
   return (
-    <div className="auth-form">
-      <h2 className="auth-form__title">{title}</h2>
-      <h4 className="auth-form__subtitle">{subtitle}</h4>
-      <div className="auth-form__body">{body}</div>
-      <button className="auth-form__submit-btn">{buttonText}</button>
-      <div className="auth-form__footer">{footer}</div>
-    </div>
+    <form onSubmit={submitAction} className="auth-form">
+      <h2 className={`auth-form__title ${firstRender && "animation a1"}`}>{title}</h2>
+      <h4 className={`auth-form__subtitle ${firstRender && "animation a1"}`}>{subtitle}</h4>
+      <div className={`auth-form__body ${firstRender && "animation a3"}`}>{body}</div>
+      <button type="submit" className={`auth-form__submit-btn ${firstRender && "animation a4"}`}>
+        {buttonText}
+      </button>
+      <div className={`auth-form__footer ${firstRender && "animation a5"}`}>{footer}</div>
+    </form>
   );
 };
 

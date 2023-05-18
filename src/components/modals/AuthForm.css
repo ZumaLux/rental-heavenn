@@ -1,5 +1,6 @@
 .auth-form {
   align-items: center;
+  width: 80%;
 }
 .auth-form__title {
   margin: 0;
@@ -92,4 +93,10 @@
 }
 .auth-form__submit-btn:hover {
   background: linear-gradient(90deg, rgba(150, 80, 150, 1) 0%, rgba(255, 64, 87, 1) 100%);
+}
+
+@media screen and (max-width: 420px) {
+  .auth-form {
+    width: 100%;
+  }
 }
