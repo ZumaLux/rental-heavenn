@@ -37,11 +37,20 @@ nav {
   margin: 0;
 }
 
+.nav-links li {
+  padding: 1rem;
+  list-style: none;
+  color: white;
+  border-radius: 10px;
+}
+
 .nav-links a {
   text-decoration: none;
-  padding: 1rem;
-  color: wheat;
-  padding: 1rem;
+}
+
+.nav-links li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
 }
 .nav-links li.active {
   background: var(--red);
@@ -80,10 +89,17 @@ nav {
     border-bottom: 1px solid gray;
     border-radius: 10px;
   }
+
   .nav-hidden {
     display: none;
   }
   .burgir-menu svg {
     display: flex;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .nav-links {
+    width: 100vw;
   }
 }

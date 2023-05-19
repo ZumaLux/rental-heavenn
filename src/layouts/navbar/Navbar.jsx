@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import logo from "../../assets/rental-heaven-logo.png";
 import { FaBars as BurgirIcon } from "react-icons/fa";
 import { CgClose as BurgirClose } from "react-icons/cg";
@@ -17,14 +17,14 @@ const Navbar = () => {
         </div>
         <div className="nav-right">
           <div className={`nav-links ${!navActive && "nav-hidden"}`}>
-            <Link to="/">Home</Link>
-            <Link to="/cars">Cars</Link>
-            <Link to="/contacts">Contact</Link>
+            <CustomLink to="/">Home</CustomLink>
+            <CustomLink to="/cars">Cars</CustomLink>
+            <CustomLink to="/contacts">Contact</CustomLink>
             <>
-              <Link to="/customers">Customers</Link>
-              <Link to="/rentals">Rentals</Link>
+              <CustomLink to="/customers">Customers</CustomLink>
+              <CustomLink to="/rentals">Rentals</CustomLink>
             </>
-            <Link to="/auth">Sign In</Link>
+            <CustomLink to="/auth">Sign In</CustomLink>
           </div>
           <div className="burgir-menu" onClick={() => setNavActive((prev) => !prev)}>
             {navActive ? <BurgirClose /> : <BurgirIcon />}
@@ -34,5 +34,19 @@ const Navbar = () => {
     </header>
   );
 };
+
+function CustomLink({ to, children, ...props }) {
+  // resolvedPath returns the full path
+  const resolvedPath = useResolvedPath(to);
+  // useMatch compares the current path to another path
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+  //end:true makes sure the entire URL matches
+
+  return (
+    <Link to={to} {...props}>
+      <li className={isActive ? "active" : ""}>{children}</li>
+    </Link>
+  );
+}
 
 export default Navbar;
