@@ -5,8 +5,23 @@ import logo from "../../assets/rental-heaven-logo.png";
 import { FaBars as BurgirIcon } from "react-icons/fa";
 import { CgClose as BurgirClose } from "react-icons/cg";
 
+const navLinks = [
+  { path: "/", title: "Home" },
+  { path: "/cars", title: "Cars" },
+  { path: "/contacts", title: "Contacts" },
+  { path: "/customers", title: "Customers" },
+  { path: "/rentals", title: "Rentals" },
+  { path: "/auth", title: "Sign In" },
+];
+
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
+
+  // open/close nav
+  const changeActive = () => {
+    setNavActive((prev) => !prev);
+  };
+
   return (
     <header>
       <nav>
@@ -17,16 +32,13 @@ const Navbar = () => {
         </div>
         <div className="nav-right">
           <div className={`nav-links ${!navActive && "nav-hidden"}`}>
-            <CustomLink to="/">Home</CustomLink>
-            <CustomLink to="/cars">Cars</CustomLink>
-            <CustomLink to="/contacts">Contact</CustomLink>
-            <>
-              <CustomLink to="/customers">Customers</CustomLink>
-              <CustomLink to="/rentals">Rentals</CustomLink>
-            </>
-            <CustomLink to="/auth">Sign In</CustomLink>
+            {navLinks.map((link, i) => (
+              <CustomLink key={i} to={link.path} onClick={() => changeActive()}>
+                {link.title}
+              </CustomLink>
+            ))}
           </div>
-          <div className="burgir-menu" onClick={() => setNavActive((prev) => !prev)}>
+          <div className="burgir-menu" onClick={() => changeActive()}>
             {navActive ? <BurgirClose /> : <BurgirIcon />}
           </div>
         </div>

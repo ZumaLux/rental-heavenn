@@ -8,7 +8,7 @@ const AuthPage = () => {
   const { closeRegister } = useFormContext();
 
   useEffect(() => {
-    // resets back to login form next time you visit SignUp page
+    // resets back to login form
     closeRegister();
   }, []);
 
