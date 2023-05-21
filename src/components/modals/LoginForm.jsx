@@ -33,11 +33,11 @@ const LoginForm = () => {
   const footerContent = (
     <div>
       <p>or login with</p>
-      <button>
+      <button disabled>
         <GoogleIcon />
         Google
       </button>
-      <button>
+      <button disabled>
         <GithubIcon />
         GitHub
       </button>

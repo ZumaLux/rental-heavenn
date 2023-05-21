@@ -43,12 +43,12 @@ const RegisterForm = () => {
   );
   const footerContent = (
     <div>
-      <p>or login with</p>
-      <button>
+      <p>or register with</p>
+      <button disabled>
         <GoogleIcon />
         Google
       </button>
-      <button>
+      <button disabled>
         <GithubIcon />
         GitHub
       </button>
