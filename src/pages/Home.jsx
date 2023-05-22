@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Home.css";
 import { useAuthContext } from "../context/authContext";
 import { signOutUser } from "../firebase/auth";
+import AddCar from "../modals/AddCar";
 
 const Home = () => {
   const { currentUser } = useAuthContext();
@@ -14,6 +15,7 @@ const Home = () => {
       Home
       <p>{currentUser?.uid}</p>
       <button onClick={() => signOutUser()}>Sign out</button>
+      <AddCar />
     </div>
   );
 };

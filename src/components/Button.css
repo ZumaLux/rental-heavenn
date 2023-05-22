@@ -1,0 +1,17 @@
+.button {
+  width: 100%;
+  padding: 1rem 10px;
+  border: 0;
+  background: linear-gradient(90deg, rgba(255, 64, 87, 1) 0%, rgba(150, 80, 150, 1) 100%);
+  border-radius: 5px;
+  margin: 1rem 0rem;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: "Rubik", sans-serif;
+  outline: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, rgba(150, 80, 150, 1) 0%, rgba(255, 64, 87, 1) 100%);
+}

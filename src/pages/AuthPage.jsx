@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./AuthPage.css";
-import LoginForm from "../components/modals/LoginForm";
-import RegisterForm from "../components/modals/RegisterForm";
+import LoginForm from "../components/forms/LoginForm";
+import RegisterForm from "../components/forms/RegisterForm";
 import { useFormContext } from "../context/formContext";
 
 const AuthPage = () => {
