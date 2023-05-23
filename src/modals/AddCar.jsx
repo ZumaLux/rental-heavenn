@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
+import { useModalContext } from "../context/modalContext";
 
 const inputFields = [
   {
@@ -86,41 +87,6 @@ const inputFields = [
     options: [],
     required: false,
   },
-  {
-    name: "Discount",
-    element: "input",
-    type: "number",
-    options: [],
-    required: false,
-  },
-  {
-    name: "Discount",
-    element: "input",
-    type: "number",
-    options: [],
-    required: false,
-  },
-  {
-    name: "Discount",
-    element: "input",
-    type: "number",
-    options: [],
-    required: false,
-  },
-  {
-    name: "Discount",
-    element: "input",
-    type: "number",
-    options: [],
-    required: false,
-  },
-  {
-    name: "Discount",
-    element: "input",
-    type: "number",
-    options: [],
-    required: false,
-  },
 ];
 
 function getYears() {
@@ -132,6 +98,12 @@ function getYears() {
 }
 
 const AddCar = () => {
+  const { isModalOpen, closeModal } = useModalContext();
+
+  const onSubmit = () => {
+    console.log("submit");
+  };
+
   const modalBody = (
     <div className="fields-container">
       {inputFields.map((field) => (
@@ -181,10 +153,10 @@ const AddCar = () => {
       title="Add New Car"
       subtitle="Please fill the car data"
       body={modalBody}
-      buttonTitle="Add"
-      isOpen={true}
-      onClose={""}
-      submitAction={""}
+      buttonLabel="Add"
+      isOpen={isModalOpen}
+      onClose={closeModal}
+      onSubmit={onSubmit}
     />
   );
 };

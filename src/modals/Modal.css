@@ -7,7 +7,7 @@
   background: rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 10;
 }
 
 .modal {
@@ -15,12 +15,23 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: white;
   padding: 2rem 1.5rem;
-  z-index: 5;
+  z-index: 15;
+
+  transition: 0.3s;
+}
+
+.animation-show {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+.animation-hide {
+  transform: translate(-50%, 100%);
+  opacity: 0;
 }
 
 .modal .header {
@@ -61,7 +72,7 @@
 
 .modal .body {
   max-height: 550px;
-  margin: 5rem 0 4rem 0;
+  margin: 5rem 0 5rem 0;
   overflow-y: scroll;
 }
 
@@ -112,10 +123,12 @@
 
 .modal .submit-btn {
   min-height: 3rem;
+  max-width: 400px;
   position: absolute;
   bottom: 1.5rem;
   left: 2rem;
   right: 2rem;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1024px) {

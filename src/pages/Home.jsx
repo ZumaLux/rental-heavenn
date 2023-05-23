@@ -3,9 +3,11 @@ import "./Home.css";
 import { useAuthContext } from "../context/authContext";
 import { signOutUser } from "../firebase/auth";
 import AddCar from "../modals/AddCar";
+import { useModalContext } from "../context/modalContext";
 
 const Home = () => {
   const { currentUser } = useAuthContext();
+  const { openModal } = useModalContext();
 
   useEffect(() => {
     console.log("user home: ", currentUser);
@@ -15,6 +17,7 @@ const Home = () => {
       Home
       <p>{currentUser?.uid}</p>
       <button onClick={() => signOutUser()}>Sign out</button>
+      <button onClick={() => openModal()}>Modal</button>
       <AddCar />
     </div>
   );
