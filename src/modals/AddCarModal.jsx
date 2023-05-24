@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import { useModalContext } from "../context/modalContext";
+import { addItem } from "../firebase/crud";
+import { collection_cars } from "../firebase/variables";
 
 const inputFields = [
   {
@@ -97,11 +99,33 @@ function getYears() {
   return years;
 }
 
-const AddCar = () => {
-  const { isModalOpen, closeModal } = useModalContext();
+const AddCarModal = () => {
+  const { addModalActive, closeAddModal } = useModalContext();
 
-  const onSubmit = () => {
-    console.log("submit");
+  const onSubmit = (e) => {
+    // submit info
+    let price = parseFloat(e.target.price.value);
+    let discount = parseInt(e.target.discount.value === "" ? 0 : e.target.discount.value);
+    let discountPrice = parseFloat((price - price * (discount / 100)).toFixed(2));
+
+    const car = {
+      brand: e.target.brand.value,
+      model: e.target.model.value,
+      year: parseInt(e.target.year.value),
+      fuel: e.target.fuel.value,
+      gearbox: e.target.gearbox.value,
+      acs: e.target.acs.value,
+      doors: parseInt(e.target.doors.value),
+      seats: parseInt(e.target.seats.value),
+      image: e.target.image.value,
+      extras: e.target.extras.value,
+      discount: discount,
+      price: price,
+      discountPrice: discountPrice,
+    };
+
+    addItem(collection_cars, car);
+    console.log("car --> ", car);
   };
 
   const modalBody = (
@@ -136,7 +160,7 @@ const AddCar = () => {
                 required={field.required}
               >
                 {field.options.map((opt) => (
-                  <option key={opt} value={field.name}>
+                  <option key={opt} value={opt}>
                     {opt}
                   </option>
                 ))}
@@ -154,11 +178,11 @@ const AddCar = () => {
       subtitle="Please fill the car data"
       body={modalBody}
       buttonLabel="Add"
-      isOpen={isModalOpen}
-      onClose={closeModal}
+      isOpen={addModalActive}
+      onClose={closeAddModal}
       onSubmit={onSubmit}
     />
   );
 };
 
-export default AddCar;
+export default AddCarModal;

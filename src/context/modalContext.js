@@ -3,17 +3,40 @@ import React, { createContext, useContext, useState } from "react";
 export const ModalContext = createContext();
 
 const ModalProvider = ({ children }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [addModalActive, setAddModalActive] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const [editModalActive, setEditModalActive] = useState(false);
+  const [editData, setEditData] = useState();
+
+  // ADD
+  const openAddModal = () => {
+    setAddModalActive(true);
   };
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeAddModal = () => {
+    setAddModalActive(false);
+  };
+
+  // EDIT
+  const openEditModal = () => {
+    setEditModalActive(true);
+  };
+  const closeEditModal = () => {
+    setEditModalActive(false);
   };
 
   return (
-    <ModalContext.Provider value={{ isModalOpen, openModal, closeModal }}>
+    <ModalContext.Provider
+      value={{
+        addModalActive,
+        editModalActive,
+        openAddModal,
+        closeAddModal,
+        openEditModal,
+        closeEditModal,
+        setEditData,
+      }}
+    >
       {children}
     </ModalContext.Provider>
   );

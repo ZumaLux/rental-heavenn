@@ -19,7 +19,7 @@ const AuthForm = ({
       <h4 className={`auth-form__subtitle ${firstRender && "animation a1"}`}>{subtitle}</h4>
       <div className={`auth-form__body ${firstRender && "animation a3"}`}>{body}</div>
       <div className={`auth-form__submit-btn ${firstRender && "animation a4"}`}>
-        <Button label={buttonText}></Button>
+        <Button type="submit" label={buttonText}></Button>
       </div>
       <div className={`auth-form__footer ${firstRender && "animation a5"}`}>{footer}</div>
     </form>

@@ -1,0 +1,51 @@
+.sidebar {
+  position: absolute;
+  left: -105px;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 150px;
+}
+
+.sidebar button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 1rem 2rem;
+  transition: 0.5s;
+  cursor: pointer;
+  background: gray;
+  color: white;
+  border: 2px solid white;
+  margin: 5px 0;
+}
+.sidebar button:hover {
+  border-radius: 0 30px 30px 0;
+  margin-left: 85px;
+  transition: 0.5s;
+}
+
+.sidebar button svg {
+  scale: 2;
+  stroke-width: 0.5px;
+}
+
+.sidebar button.green {
+  background-color: green;
+}
+.sidebar button.red {
+  background-color: red;
+}
+.sidebar button.orange {
+  background-color: orange;
+  color: black;
+}
+.sidebar button.yellow {
+  background-color: yellow;
+  color: black;
+}
+.sidebar button.purple {
+  background-color: purple;
+}
+.sidebar button.blue {
+  background-color: blue;
+}

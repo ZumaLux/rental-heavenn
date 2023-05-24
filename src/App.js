@@ -6,6 +6,7 @@ import Navbar from "./layouts/navbar/Navbar";
 import SingleCar from "./pages/SingleCar";
 import Footer from "./layouts/footer/Footer";
 import AuthPage from "./pages/AuthPage";
+import AddCarModal from "./modals/AddCarModal";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cars/:id" element={<SingleCar />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
+      <AddCarModal />
       <Footer />
     </>
   );

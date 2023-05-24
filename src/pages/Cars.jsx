@@ -9,6 +9,9 @@ import useSessionStorage from "../hooks/useSessionStorage";
 import Pagination from "../components/Pagination";
 import { sliceData } from "../functions/sliceData";
 import { collection_cars } from "../firebase/variables";
+import Sidebar from "../components/Sidebar";
+import { useModalContext } from "../context/modalContext";
+import { HiPlus as PlusIcon } from "react-icons/hi";
 
 // use it while developing
 const dbElements = [
@@ -79,13 +82,15 @@ const dbElements = [
 ];
 
 const Cars = () => {
-  // const { data } = useFetch(collection_cars);
+  const { data } = useFetch(collection_cars);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
 
+  const { openAddModal } = useModalContext();
+
   const itemsPerPage = 5;
-  const searchedItems = searchItems(searchQuery, dbElements);
+  const searchedItems = searchItems(searchQuery, data);
   const sortedItems = sortItems(sortValue, searchedItems);
   const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);
 
@@ -116,6 +121,11 @@ const Cars = () => {
           />
         </div>
       </section>
+      <Sidebar
+        btnList={[
+          { label: "Add Car", onClick: () => openAddModal(), icon: <PlusIcon />, color: "orange" },
+        ]}
+      />
     </div>
   );
 };

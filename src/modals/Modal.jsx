@@ -22,8 +22,7 @@ const Modal = ({
   const handleClose = useCallback(() => {
     //  if (disabled) return;
     setShowModal(false);
-    //adding timeout because of the animations' length -  300ms
-    console.log("close");
+    //adding timeout because of the animation's length -  300ms
     setTimeout(() => {
       onClose();
     }, 300);
@@ -31,7 +30,8 @@ const Modal = ({
 
   const handleSubmit = useCallback(
     (e) => {
-      onSubmit();
+      e.preventDefault();
+      onSubmit(e);
       handleClose();
     },
     [onSubmit]
@@ -40,7 +40,10 @@ const Modal = ({
   if (!isOpen) return null;
   return (
     <div className="modal-container">
-      <div className={`modal ${showModal ? "animation-show" : "animation-hide"}`}>
+      <form
+        onSubmit={handleSubmit}
+        className={`modal ${showModal ? "animation-show" : "animation-hide"}`}
+      >
         <div className="header">
           <h2 className="title">
             {title}
@@ -51,11 +54,11 @@ const Modal = ({
 
           <h5 className="subtitle">{subtitle}</h5>
         </div>
-        <form className="body">{body}</form>
+        <div className="body">{body}</div>
         <div className="submit-btn">
-          <Button label={buttonLabel} />
+          <Button type="submit" label={buttonLabel} />
         </div>
-      </div>
+      </form>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./Home.css";
 import { useAuthContext } from "../context/authContext";
 import { signOutUser } from "../firebase/auth";
-import AddCar from "../modals/AddCar";
+import AddCar from "../modals/AddCarModal";
 import { useModalContext } from "../context/modalContext";
 
 const Home = () => {
@@ -18,7 +18,6 @@ const Home = () => {
       <p>{currentUser?.uid}</p>
       <button onClick={() => signOutUser()}>Sign out</button>
       <button onClick={() => openModal()}>Modal</button>
-      <AddCar />
     </div>
   );
 };
