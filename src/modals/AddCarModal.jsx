@@ -158,7 +158,11 @@ const AddCarModal = () => {
                 name={field.name.toLocaleLowerCase()}
                 placeholder={field.name}
                 required={field.required}
+                defaultValue={field.name}
               >
+                <option value={field.name} disabled>
+                  {field.name}
+                </option>
                 {field.options.map((opt) => (
                   <option key={opt} value={opt}>
                     {opt}

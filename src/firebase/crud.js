@@ -14,3 +14,11 @@ export async function addItem(path, item) {
     }
   });
 }
+
+//UPDATE ITEM
+export async function updateItem(path, newItem, id) {
+  const itemDocRef = doc(db, path, id);
+  return await updateDoc(itemDocRef, newItem).then((res) => {
+    console.log("Item Updated Successfully!");
+  });
+}

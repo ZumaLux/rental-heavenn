@@ -1,5 +1,5 @@
 .sidebar {
-  position: absolute;
+  position: fixed;
   left: -105px;
   top: 40%;
   transform: translateY(-50%);
@@ -33,10 +33,10 @@
   background-color: green;
 }
 .sidebar button.red {
-  background-color: red;
+  background-color: var(--red);
 }
 .sidebar button.orange {
-  background-color: orange;
+  background-color: var(--orange);
   color: black;
 }
 .sidebar button.yellow {

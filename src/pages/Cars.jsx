@@ -82,7 +82,7 @@ const dbElements = [
 ];
 
 const Cars = () => {
-  const { data } = useFetch(collection_cars);
+  const { data, isLoading, error } = useFetch(collection_cars);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
@@ -93,6 +93,9 @@ const Cars = () => {
   const searchedItems = searchItems(searchQuery, data);
   const sortedItems = sortItems(sortValue, searchedItems);
   const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);
+
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>{error}</div>;
 
   return (
     <div className="page-container">

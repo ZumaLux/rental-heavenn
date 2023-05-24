@@ -7,6 +7,7 @@ import SingleCar from "./pages/SingleCar";
 import Footer from "./layouts/footer/Footer";
 import AuthPage from "./pages/AuthPage";
 import AddCarModal from "./modals/AddCarModal";
+import EditCarModal from "./modals/EditCarModal";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
       <AddCarModal />
+      <EditCarModal />
       <Footer />
     </>
   );

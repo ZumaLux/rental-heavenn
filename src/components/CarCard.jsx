@@ -2,12 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./CarCard.css";
 
-const CarCard = ({ id, brand, model, fuel, year, seats, img, price, discount, discountPrice }) => {
+const CarCard = ({
+  id,
+  brand,
+  model,
+  fuel,
+  year,
+  seats,
+  image,
+  price,
+  discount,
+  discountPrice,
+}) => {
   return (
     <Link className="car-card-link" to={`/cars/${id}`}>
       <div className="car-card">
         <div className="car-card__image">
-          <img src={img} alt={brand} />
+          <img src={image} alt={brand} />
         </div>
         <div className="car-card__info">
           <div className="car-card__extras">

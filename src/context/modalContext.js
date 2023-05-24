@@ -7,7 +7,7 @@ const ModalProvider = ({ children }) => {
   const [addModalActive, setAddModalActive] = useState(false);
 
   const [editModalActive, setEditModalActive] = useState(false);
-  const [editData, setEditData] = useState();
+  const [editData, setEditData] = useState(null);
 
   // ADD
   const openAddModal = () => {
@@ -18,11 +18,13 @@ const ModalProvider = ({ children }) => {
   };
 
   // EDIT
-  const openEditModal = () => {
+  const openEditModal = (data) => {
     setEditModalActive(true);
+    setEditData(data);
   };
   const closeEditModal = () => {
     setEditModalActive(false);
+    setEditData(null);
   };
 
   return (
@@ -30,11 +32,11 @@ const ModalProvider = ({ children }) => {
       value={{
         addModalActive,
         editModalActive,
+        editData,
         openAddModal,
         closeAddModal,
         openEditModal,
         closeEditModal,
-        setEditData,
       }}
     >
       {children}
