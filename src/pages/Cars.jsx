@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Cars.css";
 import useFetch from "../hooks/useFetch";
 import CarCard from "../components/CarCard";
@@ -12,6 +12,7 @@ import { collection_cars } from "../firebase/variables";
 import Sidebar from "../components/Sidebar";
 import { useModalContext } from "../context/modalContext";
 import { HiPlus as PlusIcon } from "react-icons/hi";
+import { useCarContext } from "../context/carContext";
 
 // use it while developing
 const dbElements = [
@@ -82,7 +83,8 @@ const dbElements = [
 ];
 
 const Cars = () => {
-  const { data, isLoading, error } = useFetch(collection_cars);
+  const { carList, setCarList } = useCarContext();
+  const { isLoading, error, triggerFetch } = useFetch(collection_cars, setCarList);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
@@ -90,9 +92,13 @@ const Cars = () => {
   const { openAddModal } = useModalContext();
 
   const itemsPerPage = 5;
-  const searchedItems = searchItems(searchQuery, data);
+  const searchedItems = searchItems(searchQuery, carList);
   const sortedItems = sortItems(sortValue, searchedItems);
   const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);
+
+  useEffect(() => {
+    console.log("data=", carList);
+  }, [carList]);
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error}</div>;

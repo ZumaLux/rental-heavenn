@@ -10,8 +10,23 @@
   font-family: "Rubik", sans-serif;
   outline: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.button::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, rgba(150, 80, 150, 1) 0%, rgba(255, 64, 87, 1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  z-index: -1;
 }
 
-.button:hover {
-  background: linear-gradient(90deg, rgba(150, 80, 150, 1) 0%, rgba(255, 64, 87, 1) 100%);
+.button:hover::before {
+  opacity: 1;
 }

@@ -1,19 +1,55 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useModalContext } from "../context/modalContext";
 import { AiFillEdit as EditIcon } from "react-icons/ai";
 import { AiFillDelete as DeleteIcon } from "react-icons/ai";
 import useFetchById from "../hooks/useFetchById";
 import { collection_cars } from "../firebase/variables";
+import Button from "../components/Button";
+import "./SingleCar.css";
+import { deleteItem } from "../firebase/crud";
 
 const SingleCar = () => {
   const { id } = useParams();
   const { openEditModal } = useModalContext();
   const { data, isLoading, error } = useFetchById(collection_cars, id);
+  const headerRef = useRef();
+  const navigate = useNavigate();
+
+  const shrinkHeaderOnScroll = () => {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      headerRef.current.className = "single-car__header header-shrink";
+    } else {
+      headerRef.current.className = "single-car__header";
+    }
+  };
+
+  window.onscroll = () => shrinkHeaderOnScroll();
+
+  const deleteCar = async () => {
+    await deleteItem(collection_cars, data).then((confirm) => {
+      if (confirm) navigate("/cars");
+    });
+  };
 
   return (
     <div className="page-container">
+      <div ref={headerRef} className="single-car__header">
+        <h1>
+          {data.brand} {data.model}
+        </h1>
+        <div className="rent-btn">
+          <Button label="Rent now" />
+        </div>
+      </div>
+      <div className="basic-info">
+        <div className="img-container">
+          <img src={data.image} alt="image" />
+        </div>
+        <div className="info-container"></div>
+      </div>
+
       <Sidebar
         btnList={[
           {
@@ -25,7 +61,7 @@ const SingleCar = () => {
           },
           {
             label: "Delete Car",
-            onClick: () => {},
+            onClick: () => deleteCar(),
             icon: <DeleteIcon />,
             color: "red",
           },

@@ -8,7 +8,6 @@ const useFetchById = (colName, docId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // const fetchData = async () => {
     const docRef = doc(db, colName, docId);
     setIsLoading(true);
     try {
@@ -18,13 +17,11 @@ const useFetchById = (colName, docId) => {
       });
       return unsubscribe;
     } catch (error) {
-      console.log("Error: ", error);
-      setError(error);
+      console.log("Error: ", error.message);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
-    // };
-    // fetchData();
   }, []);
 
   return { data, isLoading, error };

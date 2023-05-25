@@ -22,3 +22,15 @@ export async function updateItem(path, newItem, id) {
     console.log("Item Updated Successfully!");
   });
 }
+
+//DELETE ITEM
+export async function deleteItem(path, item) {
+  if (window.confirm(`Do you want to delete ${item.brand} ${item.model}?`)) {
+    const itemDocRef = doc(db, path, item.id);
+    deleteDoc(itemDocRef);
+    console.log("Item Deleted!");
+    return true;
+  } else {
+    return false;
+  }
+}

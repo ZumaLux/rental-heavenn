@@ -4,7 +4,7 @@
   font-family: var(--font-family);
 }
 
-.form-container {
+.auth-page .form-container {
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -18,7 +18,7 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-.img-container {
+.auth-page .img-container {
   flex: 1;
   background-color: black;
   transition: 1s;

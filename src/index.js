@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/authContext";
 import FormProvider from "./context/formContext";
 import ModalProvider from "./context/modalContext";
+import CarProvider from "./context/carContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
       <AuthProvider>
         <ModalProvider>
           <FormProvider>
-            <App />
+            <CarProvider>
+              <App />
+            </CarProvider>
           </FormProvider>
         </ModalProvider>
       </AuthProvider>
