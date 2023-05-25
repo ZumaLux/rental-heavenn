@@ -13,13 +13,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <ModalProvider>
-          <FormProvider>
-            <CarProvider>
+        <CarProvider>
+          <ModalProvider>
+            <FormProvider>
               <App />
-            </CarProvider>
-          </FormProvider>
-        </ModalProvider>
+            </FormProvider>
+          </ModalProvider>
+        </CarProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

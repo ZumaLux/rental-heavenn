@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase/config";
 import { doc, onSnapshot } from "firebase/firestore";
 
-const useFetchById = (colName, docId) => {
+const useFetchById = (colName = "", docId = "") => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);

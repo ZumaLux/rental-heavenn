@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useModalContext } from "../context/modalContext";
@@ -9,27 +9,38 @@ import { collection_cars } from "../firebase/variables";
 import Button from "../components/Button";
 import "./SingleCar.css";
 import { deleteItem } from "../firebase/crud";
+import { useCarContext } from "../context/carContext";
 
 const SingleCar = () => {
   const { id } = useParams();
   const { openEditModal } = useModalContext();
+  const { carList, setCarList } = useCarContext();
   const { data, isLoading, error } = useFetchById(collection_cars, id);
   const headerRef = useRef();
   const navigate = useNavigate();
 
-  const shrinkHeaderOnScroll = () => {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      headerRef.current.className = "single-car__header header-shrink";
-    } else {
-      headerRef.current.className = "single-car__header";
-    }
-  };
+  useEffect(() => {
+    const shrinkHeaderOnScroll = () => {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        headerRef.current.className = "single-car__header header-shrink";
+      } else {
+        headerRef.current.className = "single-car__header";
+      }
+    };
 
-  window.onscroll = () => shrinkHeaderOnScroll();
+    // window.onscroll = () => shrinkHeaderOnScroll();
+    window.addEventListener("scroll", shrinkHeaderOnScroll);
+    return () => {
+      window.removeEventListener("scroll", shrinkHeaderOnScroll);
+    };
+  }, []);
 
   const deleteCar = async () => {
     await deleteItem(collection_cars, data).then((confirm) => {
-      if (confirm) navigate("/cars");
+      if (!confirm) return;
+      const newList = carList.filter((item) => item.id !== data.id);
+      setCarList(newList);
+      navigate("/cars");
     });
   };
 

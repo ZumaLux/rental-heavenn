@@ -1,20 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 
-const useFetch = (colName, setContext) => {
-  // const { carList, setCarList } = useCarContext();
-  // const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [trigger, setTrigger] = useState(false);
-
-  const triggerFetch = () => {
-    setTrigger((prev) => !prev);
-  };
-
+const useFetch = (
+  colName = "",
+  listContext = [],
+  setListContext = () => {},
+  setIsLoading = () => {},
+  setError = () => {}
+) => {
   useEffect(() => {
     const fetchData = async () => {
+      if (listContext.length > 0) return;
       setIsLoading(true);
       try {
         const collectionRef = collection(db, colName);
@@ -25,7 +22,7 @@ const useFetch = (colName, setContext) => {
           throw new Error("No data found");
         }
         console.log("fetch data: ", newData);
-        setContext(newData);
+        setListContext(newData);
       } catch (error) {
         console.log("Error: ", error.message);
         setError(error.message);
@@ -34,9 +31,7 @@ const useFetch = (colName, setContext) => {
       }
     };
     fetchData();
-  }, [trigger]);
-
-  return { triggerFetch };
+  }, []);
 };
 
 export default useFetch;

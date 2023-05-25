@@ -3,8 +3,8 @@ import Modal from "./Modal";
 import { useModalContext } from "../context/modalContext";
 import { addItem } from "../firebase/crud";
 import { collection_cars } from "../firebase/variables";
-import useFetch from "../hooks/useFetch";
 import { useCarContext } from "../context/carContext";
+import getSingleItem from "../firebase/getSingleItem";
 
 const inputFields = [
   {
@@ -104,7 +104,6 @@ function getYears() {
 const AddCarModal = () => {
   const { addModalActive, closeAddModal } = useModalContext();
   const { setCarList } = useCarContext();
-  const { triggerFetch } = useFetch(collection_cars, setCarList);
   const onSubmit = (e) => {
     // submit info
     let price = parseFloat(e.target.price.value);
@@ -127,9 +126,13 @@ const AddCarModal = () => {
       discountPrice: discountPrice,
     };
 
-    addItem(collection_cars, car).then(() => triggerFetch(collection_cars));
-
-    console.log("car --> ", car);
+    addItem(collection_cars, car).then((res) => {
+      if (!res) return;
+      getSingleItem(collection_cars, res.id).then((res) => {
+        setCarList((current) => [...current, res]);
+      });
+      console.log("car --> ", car);
+    });
   };
 
   const modalBody = (

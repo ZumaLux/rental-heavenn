@@ -8,8 +8,10 @@ import Footer from "./layouts/footer/Footer";
 import AuthPage from "./pages/AuthPage";
 import AddCarModal from "./modals/AddCarModal";
 import EditCarModal from "./modals/EditCarModal";
+import { useModalContext } from "./context/modalContext";
 
 function App() {
+  const { addModalActive } = useModalContext();
   return (
     <>
       <Navbar />

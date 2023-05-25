@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import { useModalContext } from "../context/modalContext";
 import { updateItem } from "../firebase/crud";
 import { collection_cars } from "../firebase/variables";
+import { useCarContext } from "../context/carContext";
 
 const getInputFields = (data) => {
   return [
@@ -115,6 +116,7 @@ function getYears() {
 
 const EditCarModal = () => {
   const { editModalActive, closeEditModal, editData } = useModalContext();
+  const { carList, setCarList } = useCarContext();
 
   const onSubmit = (e) => {
     // submit info
@@ -138,8 +140,13 @@ const EditCarModal = () => {
       discountPrice: discountPrice,
     };
 
-    updateItem(collection_cars, car, editData.id);
-    console.log("car --> ", car);
+    updateItem(collection_cars, car, editData.id).then((res) => {
+      const itemIndex = carList.indexOf(carList.find((item) => item.id === res.id));
+      const updatedList = [...carList];
+      updatedList[itemIndex] = res;
+      setCarList(updatedList);
+      console.log("car --> ", res);
+    });
   };
 
   const modalBody = (

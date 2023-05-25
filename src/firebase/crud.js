@@ -6,8 +6,9 @@ export async function addItem(path, item) {
   const dataCollectionRef = collection(db, path);
   return await addDoc(dataCollectionRef, item).then((res) => {
     if (res) {
+      console.log("db response: ", res);
       console.log("Item Added Successfully!");
-      return true;
+      return res;
     } else {
       console.log("Adding Item Failed!");
       return false;
@@ -18,8 +19,9 @@ export async function addItem(path, item) {
 //UPDATE ITEM
 export async function updateItem(path, newItem, id) {
   const itemDocRef = doc(db, path, id);
-  return await updateDoc(itemDocRef, newItem).then((res) => {
+  return await updateDoc(itemDocRef, newItem).then(() => {
     console.log("Item Updated Successfully!");
+    return { ...newItem, id };
   });
 }
 
