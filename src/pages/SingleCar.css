@@ -25,20 +25,34 @@
   width: 150px;
 }
 
-.basic-info {
+.single-car__basic-info {
   width: 100%;
   height: 400px;
   margin: 6rem 0;
   padding: 3rem;
+  display: flex;
 }
 
-.basic-info .img-container {
+.single-car__basic-info .img-container {
   width: 50%;
   height: 100%;
 }
 
-.basic-info .img-container img {
+.single-car__basic-info .img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.single-car__basic-info .info-container {
+  padding: 1rem 0rem 2rem 2rem;
+  flex-grow: 1;
+}
+.single-car__basic-info .info-container .info {
+  columns: 2;
+  border-left: 1px solid gray;
+  padding-left: 1rem;
+}
+.single-car__basic-info .info-container .info p {
+  display: flex;
+  padding: 0.5rem 0;
 }

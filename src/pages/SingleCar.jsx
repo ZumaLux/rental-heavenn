@@ -10,6 +10,12 @@ import Button from "../components/Button";
 import "./SingleCar.css";
 import { deleteItem } from "../firebase/crud";
 import { useCarContext } from "../context/carContext";
+import { AiTwotoneCalendar as CalenadrIcon } from "react-icons/ai";
+import { BsFillFuelPumpFill as FuelIcon } from "react-icons/bs";
+import { BsPersonFill as SeatIcon } from "react-icons/bs";
+import { TbManualGearbox as GearboxIcon } from "react-icons/tb";
+import { GiCarDoor as DoorIcon } from "react-icons/gi";
+import { TbAirConditioning as AcIcon } from "react-icons/tb";
 
 const SingleCar = () => {
   const { id } = useParams();
@@ -54,11 +60,38 @@ const SingleCar = () => {
           <Button label="Rent now" />
         </div>
       </div>
-      <div className="basic-info">
+      <div className="single-car__basic-info">
         <div className="img-container">
           <img src={data.image} alt="image" />
         </div>
-        <div className="info-container"></div>
+        <div className="info-container">
+          <div className="info">
+            <p>
+              <CalenadrIcon />
+              &nbsp; {data.year}
+            </p>
+            <p>
+              <FuelIcon />
+              &nbsp; {data.fuel}
+            </p>
+            <p>
+              <SeatIcon />
+              &nbsp; {data.seats}
+            </p>
+            <p>
+              <GearboxIcon />
+              &nbsp; {data.gearbox}
+            </p>
+            <p>
+              <DoorIcon />
+              &nbsp; {data.doors}
+            </p>
+            <p>
+              <AcIcon />
+              &nbsp; {data.ac}
+            </p>
+          </div>
+        </div>
       </div>
 
       <Sidebar

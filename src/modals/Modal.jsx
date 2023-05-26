@@ -20,7 +20,6 @@ const Modal = ({
   }, [isOpen]);
 
   const handleClose = useCallback(() => {
-    //  if (disabled) return;
     setShowModal(false);
     //adding timeout because of the animation's length -  300ms
     setTimeout(() => {

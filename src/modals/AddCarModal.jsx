@@ -57,7 +57,7 @@ const inputFields = [
     required: true,
   },
   {
-    name: "ACS",
+    name: "AC",
     element: "select",
     type: "",
     options: ["Yes", "No"],
@@ -116,7 +116,7 @@ const AddCarModal = () => {
       year: parseInt(e.target.year.value),
       fuel: e.target.fuel.value,
       gearbox: e.target.gearbox.value,
-      acs: e.target.acs.value,
+      ac: e.target.ac.value,
       doors: parseInt(e.target.doors.value),
       seats: parseInt(e.target.seats.value),
       image: e.target.image.value,
