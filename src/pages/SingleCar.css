@@ -1,3 +1,4 @@
+/* --- HEADER  ---*/
 .single-car__header {
   padding: 1rem 2rem;
   display: flex;
@@ -10,7 +11,16 @@
   transition: 0.3s;
 }
 
-.single-car__header .rent-btn {
+.single-car__header .rent-btn-container {
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+.single-car__header .rent-btn-container .rent-price {
+  padding: 1rem;
+  font-weight: bold;
+}
+.single-car__header .rent-btn-container .rent-btn {
   width: 300px;
   transition: 0.3s;
 }
@@ -21,21 +31,33 @@
 }
 
 .single-car__header.header-shrink .rent-btn {
-  transition: 0.3s;
   width: 150px;
+  transition: 0.3s;
 }
 
-.single-car__basic-info {
+/* --- BASIC INFO --- */
+.single-car__basic-info-heading {
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.single-car__basic-info-container {
   width: 100%;
-  height: 400px;
-  margin: 6rem 0;
+  margin-top: 8rem;
   padding: 3rem;
+  background: var(--light-blue);
+}
+.single-car__basic-info {
+  height: 500px;
   display: flex;
 }
 
 .single-car__basic-info .img-container {
   width: 50%;
   height: 100%;
+  border: 3px solid white;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .single-car__basic-info .img-container img {
@@ -44,15 +66,83 @@
   object-fit: cover;
 }
 .single-car__basic-info .info-container {
-  padding: 1rem 0rem 2rem 2rem;
+  padding: 0rem 0rem 0rem 3rem;
   flex-grow: 1;
 }
 .single-car__basic-info .info-container .info {
   columns: 2;
-  border-left: 1px solid gray;
-  padding-left: 1rem;
+  border: 1px solid gray;
+  padding: 1rem 1.5rem;
+  height: 100%;
+  border-radius: 10px;
+  background: white;
 }
 .single-car__basic-info .info-container .info p {
   display: flex;
   padding: 0.5rem 0;
+}
+
+/*  --- DETAILS ---*/
+.single-car__details-container {
+  display: flex;
+  padding: 2rem 3rem 3rem 3rem;
+}
+.single-car__details-container .single-car__details {
+  width: 50%;
+}
+.single-car__details-container .single-car__details-heading {
+  padding: 1rem;
+}
+.single-car__details-container .row-container {
+  display: flex;
+  padding: 0rem 3rem;
+  border-radius: 10px;
+}
+.single-car__details-container .row-container:nth-of-type(odd) {
+  background-color: var(--light-blue);
+}
+
+.single-car__details-container .row-container .row-title {
+  width: 150px;
+  padding: 1rem 0;
+}
+.single-car__details-container .row-info {
+  flex-grow: 1;
+  padding: 1rem 0;
+}
+
+.single-car__description {
+  width: 50%;
+  padding-left: 3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .single-car__header {
+    /* padding: 0 2rem; */
+  }
+  .single-car__header .rent-btn-container .rent-btn {
+    width: 150px;
+  }
+  .single-car__header.header-shrink {
+    transition: 0.3s;
+  }
+
+  .single-car__header.header-shrink .rent-btn {
+    transition: 0.3s;
+  }
+
+  .single-car__basic-info-container {
+    margin-top: 8rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .single-car__header-title {
+    /* display: none; */
+  }
+  .single-car__header .rent-btn-container {
+    width: 100%;
+    justify-content: end;
+  }
 }
