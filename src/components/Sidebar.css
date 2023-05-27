@@ -13,7 +13,6 @@
   padding: 1rem 1rem 1rem 2rem;
   transition: 0.5s;
   cursor: pointer;
-  background: gray;
   color: white;
   border: 2px solid white;
   margin: 5px 0;
@@ -48,4 +47,18 @@
 }
 .sidebar button.blue {
   background-color: blue;
+}
+
+@media only screen and (max-width: 640px) {
+  .sidebar {
+    left: -115px;
+  }
+  .sidebar button {
+    padding: 0.7rem 0.7rem 0.7rem 2.3rem;
+  }
+
+  .sidebar button svg {
+    scale: 1.5;
+    stroke-width: 0.5px;
+  }
 }
