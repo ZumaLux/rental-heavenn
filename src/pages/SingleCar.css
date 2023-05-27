@@ -11,16 +11,16 @@
   transition: 0.3s;
 }
 
-.single-car__header .rent-btn-container {
+.single-car__rent-btn-container {
   transition: 0.3s;
   display: flex;
   align-items: center;
 }
-.single-car__header .rent-btn-container .rent-price {
+.single-car__rent-btn-container .rent-price {
   padding: 1rem;
   font-weight: bold;
 }
-.single-car__header .rent-btn-container .rent-btn {
+.single-car__rent-btn-container .rent-btn {
   width: 300px;
   transition: 0.3s;
 }
@@ -36,7 +36,7 @@
 }
 
 /* --- BASIC INFO --- */
-.single-car__basic-info-heading {
+.single-car__basic-info-title {
   padding-bottom: 1rem;
 }
 
@@ -87,26 +87,26 @@
   display: flex;
   padding: 2rem 3rem 3rem 3rem;
 }
-.single-car__details-container .single-car__details {
+.single-car__details {
   width: 50%;
 }
-.single-car__details-container .single-car__details-heading {
+.single-car__details-heading {
   padding: 1rem 0;
 }
-.single-car__details-container .row-container {
+.single-car__details .row-container {
   display: flex;
   padding: 0rem 3rem;
   border-radius: 10px;
 }
-.single-car__details-container .row-container:nth-of-type(odd) {
+.single-car__details .row-container:nth-of-type(odd) {
   background-color: var(--light-blue);
 }
 
-.single-car__details-container .row-container .row-title {
+.single-car__details .row-container .row-title {
   width: 150px;
   padding: 1rem 0;
 }
-.single-car__details-container .row-info {
+.single-car__details .row-info {
   flex-grow: 1;
   padding: 1rem 0;
 }
@@ -131,7 +131,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .single-car__header .rent-btn-container .rent-btn {
+  .single-car__rent-btn-container .rent-btn {
     width: 150px;
   }
   .single-car__header.header-shrink {
@@ -164,11 +164,11 @@
   .single-car__details-container {
     display: block;
   }
-  .single-car__details-container .single-car__details {
+  .single-car__details {
     width: 100%;
     text-align: center;
   }
-  .single-car__details-container .single-car__description {
+  .single-car__description {
     width: 100%;
     padding: 0;
     text-align: center;
@@ -177,7 +177,7 @@
 }
 
 @media only screen and (max-width: 640px) {
-  .single-car__header .rent-btn-container {
+  .single-car__rent-btn-container {
     width: 100%;
     justify-content: end;
   }
@@ -197,10 +197,10 @@
   .single-car__header-title {
     display: none;
   }
-  .single-car__header .rent-btn-container {
+  .single-car__rent-btn-container {
     justify-content: space-between;
   }
-  .single-car__header .rent-btn-container .rent-price {
+  .single-car__rent-btn-container .rent-price {
     padding: 0;
   }
 

@@ -15,11 +15,11 @@ const AuthPage = () => {
   return (
     <div className="page-container">
       <div className="auth-page">
-        <div className="form-container">
+        <div className="auth-page__form">
           <LoginForm />
           <RegisterForm />
         </div>
-        <div className="img-container"></div>
+        <div className="auth-page__img"></div>
       </div>
     </div>
   );

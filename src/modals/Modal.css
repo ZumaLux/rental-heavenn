@@ -34,14 +34,14 @@
   opacity: 0;
 }
 
-.modal .header {
+.modal__header {
   position: absolute;
   top: 3rem;
   left: 2rem;
   right: 2rem;
 }
 
-.modal .title::before {
+.modal__title::before {
   content: "";
   position: absolute;
   top: -0.5rem;
@@ -50,27 +50,27 @@
   background: #9b59b6;
 }
 
-.modal .title {
+.modal__title {
   position: relative;
   cursor: default;
 }
 
-.modal .subtitle {
+.modal__subtitle {
   cursor: default;
   color: #a1a1a1;
 }
 
-.close-btn {
+.modal__close-btn {
   float: right;
   scale: 1.3;
 }
-.close-btn:hover {
+.modal__close-btn:hover {
   color: red;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.modal .body {
+.modal__body {
   max-height: 550px;
   margin: 5rem 0 5rem 0;
   overflow-y: scroll;
@@ -120,7 +120,7 @@
   transition: 0s;
 }
 
-.modal .submit-btn {
+.modal__submit-btn {
   min-height: 3rem;
   max-width: 400px;
   position: absolute;
@@ -142,10 +142,10 @@
     overflow: scroll;
   }
 
-  .modal .header {
+  .modal__header {
     top: 5rem;
   }
-  .modal .body {
+  .modal__body {
     max-height: 65vh;
     margin: 6rem 0 4rem 0;
   }

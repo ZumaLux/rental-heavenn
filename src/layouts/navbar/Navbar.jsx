@@ -24,13 +24,13 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav>
-        <div className="nav-logo">
+      <nav className="nav">
+        <div className="nav__logo">
           <Link to="/">
             <img src={logo} alt="" />
           </Link>
         </div>
-        <div className="nav-right">
+        <div className="nav__links-container">
           <div className={`nav-links ${!navActive && "nav-hidden"}`}>
             {navLinks.map((link, i) => (
               <CustomLink key={i} to={link.path} onClick={() => changeActive()}>

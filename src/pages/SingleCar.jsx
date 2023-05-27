@@ -56,7 +56,7 @@ const SingleCar = () => {
         <h1 className="single-car__header-title">
           {data.brand} {data.model}
         </h1>
-        <div className="rent-btn-container">
+        <div className="single-car__rent-btn-container">
           <div className="rent-price">$ {data.price}</div>
           <div className="rent-btn">
             <Button label="Rent now" />
@@ -65,7 +65,7 @@ const SingleCar = () => {
       </div>
 
       <div className="single-car__basic-info-container">
-        <h1 className="single-car__basic-info-heading">
+        <h1 className="single-car__basic-info-title">
           {data.brand} {data.model}
         </h1>
         <div className="single-car__basic-info">

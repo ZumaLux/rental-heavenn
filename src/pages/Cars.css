@@ -4,17 +4,17 @@
   padding: 1rem 3rem;
 }
 
-.cars-nav {
+.cars-grid__nav {
   display: flex;
   justify-content: flex-end;
   padding: 1rem 0.5rem;
   width: 100%;
 }
-.cars-nav__search {
+.cars-grid__nav-search {
   max-width: 500px;
   padding: 1rem;
 }
-.cars-nav__sort {
+.cars-grid__nav-sort {
   min-width: 200px;
   max-width: 500px;
   padding: 1rem;
@@ -41,7 +41,7 @@
   );
 }
 
-.pagination-container {
+.cars-grid__pagination {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -50,30 +50,35 @@
 }
 
 /* SCREENS */
-@media screen and (max-width: 640px) {
-  .cars-grid {
-    padding: 1rem 1rem;
-  }
-}
-@media screen and (max-width: 420px) {
-  .cars-grid__content {
-    --grid-item--min-width: 12rem;
+@media screen and (max-width: 768px) {
+  .cars-grid__nav {
+    justify-content: center;
+    padding: 1rem 0;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .cars-nav {
+  .cars-grid {
+    padding: 1rem 1rem;
+  }
+  .cars-grid__nav {
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
   }
-  .cars-nav__search {
+  .cars-grid__nav-search {
     width: 100%;
     padding: 0.5rem;
   }
-  .cars-nav__sort {
+  .cars-grid__nav-sort {
     width: 100%;
     padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .cars-grid__content {
+    --grid-item--min-width: 12rem;
   }
 }
 

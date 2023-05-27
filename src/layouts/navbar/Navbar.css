@@ -12,19 +12,19 @@ nav {
   padding: 0.5rem 2rem;
 }
 
-.nav-logo {
+.nav__logo {
   height: 3.1rem;
   width: 8rem;
   z-index: 10;
 }
 
-.nav-logo img {
+.nav__logo img {
   object-fit: contain;
   width: 100%;
   height: 100%;
 }
 
-.nav-right {
+.nav__links-container {
   display: flex;
   align-items: center;
 }

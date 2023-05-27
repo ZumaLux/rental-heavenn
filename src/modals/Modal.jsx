@@ -43,18 +43,18 @@ const Modal = ({
         onSubmit={handleSubmit}
         className={`modal ${showModal ? "animation-show" : "animation-hide"}`}
       >
-        <div className="header">
-          <h2 className="title">
+        <div className="modal__header">
+          <h2 className="modal__title">
             {title}
-            <div className="close-btn" onClick={handleClose}>
+            <div className="modal__close-btn" onClick={handleClose}>
               <CloseButton />
             </div>
           </h2>
 
-          <h5 className="subtitle">{subtitle}</h5>
+          <h5 className="modal__subtitle">{subtitle}</h5>
         </div>
-        <div className="body">{body}</div>
-        <div className="submit-btn">
+        <div className="modal__body">{body}</div>
+        <div className="modal__submit-btn">
           <Button type="submit" label={buttonLabel} />
         </div>
       </form>

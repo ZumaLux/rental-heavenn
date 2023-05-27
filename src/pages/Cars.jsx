@@ -115,11 +115,11 @@ const Cars = () => {
   return (
     <div className="page-container">
       <section className="cars-grid">
-        <div className="cars-nav">
-          <div className="cars-nav__search">
+        <div className="cars-grid__nav">
+          <div className="cars-grid__nav-search">
             <SearchBar setSearchQuery={(value) => setSearchQuery(value)} />
           </div>
-          <div className="cars-nav__sort">
+          <div className="cars-grid__nav-sort">
             <SortBar
               sortOptions={["Brand Model", "Price Brand", "Year Brand", "Discount Brand"]}
               sortValue={sortValue}
@@ -130,7 +130,7 @@ const Cars = () => {
         <div className="cars-grid__content">
           {slicedData && slicedData.map((car) => <CarCard key={car.id} {...car} />)}
         </div>
-        <div className="pagination-container">
+        <div className="cars-grid__pagination">
           <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={sortedItems.length}
