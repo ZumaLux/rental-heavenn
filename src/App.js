@@ -9,9 +9,9 @@ import AuthPage from "./pages/AuthPage";
 import AddCarModal from "./modals/AddCarModal";
 import EditCarModal from "./modals/EditCarModal";
 import { useModalContext } from "./context/modalContext";
+import Contacts from "./pages/Contacts";
 
 function App() {
-  const { addModalActive } = useModalContext();
   return (
     <>
       <Navbar />
@@ -19,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/:id" element={<SingleCar />} />
+        <Route path="/contacts" element={<Contacts />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
       <AddCarModal />

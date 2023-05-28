@@ -1,0 +1,27 @@
+.feature {
+  width: 300px;
+  text-align: center;
+  padding: 1rem 0;
+  font-family: var(--font-family);
+  margin: 0 4rem;
+}
+
+.feature__icon svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.feature__title {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 820px) {
+  .feature {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .feature {
+    font-size: 0.8rem;
+  }
+}

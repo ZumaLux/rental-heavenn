@@ -1,0 +1,165 @@
+.contacts-top {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family);
+}
+
+.contacts-top .top-left {
+  width: 50%;
+}
+.contacts-top .top-left .title {
+  text-align: center;
+}
+.contacts-top .top-left form {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  padding-right: 3rem;
+}
+.contacts-top .top-left form input {
+  width: 100%;
+  margin-bottom: 1rem;
+  height: 2rem;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: var(--dirty-white);
+}
+.contacts-top .top-left form input:nth-child(6) {
+  height: 5rem;
+}
+
+.contacts-top .top-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-blue);
+  padding: 2rem;
+  border-radius: 10px;
+}
+.contacts-top .top-right img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.contacts-top .top-right .title {
+  font-size: xx-large;
+  margin: 2rem 0;
+}
+
+.contacts-bottom {
+  display: flex;
+  font-family: var(--font-family);
+  padding: 3rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background: var(--light-blue);
+}
+.contacts-bottom .bot-left {
+  width: 50%;
+}
+.contacts-bottom .bot-left .title1 {
+  margin-bottom: 1rem;
+  font-size: xx-large;
+}
+.contacts-bottom .bot-left .title2 {
+  margin-bottom: 3rem;
+  font-size: larger;
+}
+
+.contacts-bottom .bot-left .icons * {
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem 0.5rem;
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+
+.contacts-bottom .bot-right {
+  width: 50%;
+  display: flex;
+}
+.contacts-bottom .bot-right .card {
+  width: 60%;
+  height: 20rem;
+  margin: 0 auto;
+  margin-top: -12rem;
+  border: 1px solid grey;
+  text-align: center;
+  background: rgb(219, 219, 219);
+  box-shadow: 2px 2px 5px black;
+  width: 25rem;
+  height: 25rem;
+  min-height: fit-content;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+@media screen and (max-width: 820px) {
+  .contacts-top {
+    flex-direction: column-reverse;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  .contacts-top .top-left {
+    width: 80%;
+  }
+  .contacts-top .top-left form {
+    padding: 0;
+  }
+  .contacts-top .top-right {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+  .contacts-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  .contacts-bottom .bot-left {
+    width: 80%;
+  }
+  .contacts-bottom .bot-right {
+    width: 80%;
+    justify-content: center;
+  }
+  .contacts-bottom .bot-right .card {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .contacts-top {
+    padding: 2rem;
+  }
+  .contacts-top .top-left {
+    width: 100%;
+  }
+  .contacts-top .top-left form {
+    padding: 0;
+  }
+  .contacts-top .top-right {
+    width: 100%;
+  }
+  .contacts-bottom {
+    padding: 2rem;
+  }
+  .contacts-bottom .bot-left {
+    width: 100%;
+  }
+  .contacts-bottom .bot-right {
+    width: 100%;
+    padding: 0;
+  }
+}

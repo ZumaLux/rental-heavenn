@@ -1,0 +1,191 @@
+.home-header {
+  width: 100%;
+  height: 70vh;
+  padding: 0 3rem;
+  position: relative;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url("./../assets/relaxCar.jpg");
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: var(--font-family);
+}
+
+.home-header__left-side {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--dirty-white);
+}
+
+.home-header h1 {
+  font-size: 35px;
+}
+
+.home-header .rent-btn {
+  margin-top: 50px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: var(--dirty-white);
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid var(--dirty-white);
+  background-color: var(--red);
+  transition: 0.3s;
+}
+
+.home-header .rent-btn:hover {
+  scale: 0.95;
+  box-shadow: 3px 3px 3px black;
+}
+
+.home-header__author-name {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: var(--orange);
+  font-style: italic;
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+.home-features {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+}
+/* ------------------------------------------------------- */
+.home-dark-lovers {
+  width: 100%;
+  height: 80vh;
+  padding: 3rem;
+  display: flex;
+  background: rgb(37, 37, 37);
+}
+
+.home-dark-lovers__image-container {
+  width: 80%;
+  height: 100%;
+  border: 1px solid var(--dirty-white);
+  position: relative;
+}
+
+.home-dark-lovers__image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.home-dark-lovers__text-container {
+  width: 100%;
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--dirty-white);
+}
+
+.home-dark-lovers__text-container h1 {
+  padding: 2rem 0 2rem 0;
+  font-size: 40px;
+}
+
+.home-dark-lovers__text-container p {
+  font-family: var(--font-family);
+  font-style: italic;
+}
+
+.home-dark-lovers .see-more-btn {
+  width: 300px;
+}
+
+.home-dark-lovers__author-name {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: var(--orange);
+  font-style: italic;
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+@media screen and (max-width: 768px) {
+  .home-header {
+    height: 100vh;
+    border-radius: 0;
+    background-position: left;
+  }
+
+  .home-dark-lovers {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .home-dark-lovers__image-container {
+    width: 100%;
+  }
+  .home-dark-lovers__image-container img {
+    object-fit: cover;
+  }
+
+  .home-dark-lovers__text-container {
+    padding: 0;
+  }
+
+  .home-dark-lovers .see-more-btn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .home-dark-lovers {
+    padding: 2rem 1rem;
+  }
+
+  .home-dark-lovers__image-container {
+    width: 100%;
+  }
+  .home-dark-lovers__image-container img {
+    object-fit: cover;
+  }
+
+  .home-dark-lovers__text-container {
+    padding: 0;
+  }
+
+  .home-dark-lovers .see-more-btn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-header {
+    background-position: center;
+  }
+
+  .home-header h1 {
+    font-size: 28px;
+  }
+  .home-header .see-more-btn {
+    padding: 0.5rem 1rem;
+  }
+  .home-header__author-name {
+    font-size: 0.6rem;
+  }
+  .home-header .see-more-btn {
+    font-size: 0.8rem;
+  }
+
+  .home-dark-lovers__text-container p {
+    font-size: 0.8rem;
+  }
+}

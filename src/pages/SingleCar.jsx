@@ -57,7 +57,10 @@ const SingleCar = () => {
           {data.brand} {data.model}
         </h1>
         <div className="single-car__rent-btn-container">
-          <div className="rent-price">$ {data.price}</div>
+          <div className="rent-price">
+            {data.discount > 0 && <s style={{ color: "red" }}>$ {data.price}</s>} $
+            {data.discountPrice}
+          </div>
           <div className="rent-btn">
             <Button label="Rent now" />
           </div>
