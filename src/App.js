@@ -6,10 +6,10 @@ import Navbar from "./layouts/navbar/Navbar";
 import SingleCar from "./pages/SingleCar";
 import Footer from "./layouts/footer/Footer";
 import AuthPage from "./pages/AuthPage";
-import AddCarModal from "./modals/AddCarModal";
-import EditCarModal from "./modals/EditCarModal";
-import { useModalContext } from "./context/modalContext";
+import AddCar from "./modals/AddCar";
+import EditCar from "./modals/EditCar";
 import Contacts from "./pages/Contacts";
+import RentCar from "./modals/RentCar";
 
 function App() {
   return (
@@ -22,9 +22,10 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
-      <AddCarModal />
-      <EditCarModal />
+      <AddCar />
+      <EditCar />
       <Footer />
+      <RentCar />
     </>
   );
 }

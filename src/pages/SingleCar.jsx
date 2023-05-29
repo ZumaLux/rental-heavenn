@@ -19,11 +19,13 @@ import { TbAirConditioning as AcIcon } from "react-icons/tb";
 
 const SingleCar = () => {
   const { id } = useParams();
-  const { openEditModal } = useModalContext();
+  const { openEditModal, setEditData } = useModalContext();
   const { carList, setCarList } = useCarContext();
   const { data, isLoading, error } = useFetchById(collection_cars, id);
+  const { openRentModal } = useModalContext();
   const headerRef = useRef();
   const navigate = useNavigate();
+  const fields = ["brand", "model", "year", "fuel", "gearbox", "doors", "seats", "ac", "extras"];
 
   useEffect(() => {
     const shrinkHeaderOnScroll = () => {
@@ -40,6 +42,10 @@ const SingleCar = () => {
       window.removeEventListener("scroll", shrinkHeaderOnScroll);
     };
   }, []);
+
+  useEffect(() => {
+    setEditData(data);
+  }, [data]);
 
   const deleteCar = async () => {
     await deleteItem(collection_cars, data).then((confirm) => {
@@ -62,7 +68,7 @@ const SingleCar = () => {
             {data.discountPrice}
           </div>
           <div className="rent-btn">
-            <Button label="Rent now" />
+            <Button label="Rent now" onClick={() => openRentModal()} />
           </div>
         </div>
       </div>
@@ -109,22 +115,13 @@ const SingleCar = () => {
       <div className="single-car__details-container">
         <div className="single-car__details">
           <h1 className="single-car__details-heading">Details</h1>
-          {Object.keys(data).map((key, index) => {
-            if (
-              key === "id" ||
-              key === "image" ||
-              key === "discount" ||
-              key === "price" ||
-              key === "discountPrice"
-            )
-              return "";
-
+          {fields.map((field) => {
             return (
-              <div className="row-container" key={index}>
+              <div className="row-container" key={field}>
                 <div className="row-title">
-                  <b>{key.toUpperCase()}</b>
+                  <b>{field.toUpperCase()}</b>
                 </div>
-                <div className="row-info">{data[key]}</div>
+                <div className="row-info">{data[field]}</div>
               </div>
             );
           })}
@@ -143,7 +140,7 @@ const SingleCar = () => {
         btnList={[
           {
             label: "Edit Car",
-            onClick: () => openEditModal(data),
+            onClick: () => openEditModal(),
             icon: <EditIcon />,
             color: "orange",
             data: data,
@@ -161,25 +158,3 @@ const SingleCar = () => {
 };
 
 export default SingleCar;
-
-// {
-//   Object.keys(car).map((key, index) => {
-//     if (
-//       key === "id" ||
-//       key === "img" ||
-//       key === "discount" ||
-//       key === "price" ||
-//       key === "discPrice"
-//     )
-//       return "";
-
-//     return (
-//       <div className="row" key={index}>
-//         <div className="row-title">
-//           <b>{key.toUpperCase()}</b>
-//         </div>
-//         <div className="row-info">{car[key]}</div>
-//       </div>
-//     );
-//   });
-// }
