@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import logo from "../../assets/rental-heaven-logo.png";
 import { FaBars as BurgirIcon } from "react-icons/fa";
 import { CgClose as BurgirClose } from "react-icons/cg";
+import useBlockScroll from "../../hooks/useBlockScroll";
 
 const navLinks = [
   { path: "/", title: "Home" },
@@ -16,10 +17,17 @@ const navLinks = [
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
+  const { blockScroll, allowScroll } = useBlockScroll();
 
   // open/close nav
-  const changeActive = () => {
+  const toggleNav = () => {
     setNavActive((prev) => !prev);
+    if (navActive) allowScroll();
+    if (!navActive) blockScroll();
+  };
+  const closeNav = () => {
+    setNavActive(false);
+    allowScroll();
   };
 
   return (
@@ -33,12 +41,12 @@ const Navbar = () => {
         <div className="nav__links-container">
           <div className={`nav-links ${!navActive && "nav-hidden"}`}>
             {navLinks.map((link, i) => (
-              <CustomLink key={i} to={link.path} onClick={() => changeActive()}>
+              <CustomLink key={i} to={link.path} onClick={() => closeNav()}>
                 {link.title}
               </CustomLink>
             ))}
           </div>
-          <div className="burgir-menu" onClick={() => changeActive()}>
+          <div className="burgir-menu" onClick={() => toggleNav()}>
             {navActive ? <BurgirClose /> : <BurgirIcon />}
           </div>
         </div>

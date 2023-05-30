@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import "./Modal.css";
 import { AiOutlineCloseCircle as CloseButton } from "react-icons/ai";
 import Button from "../components/Button";
+import useBlockScroll from "../hooks/useBlockScroll";
 
 const Modal = ({
   title = String,
@@ -14,9 +15,12 @@ const Modal = ({
 }) => {
   // additional state for the hide/show animation
   const [showModal, setShowModal] = useState(isOpen);
+  const { blockScroll, allowScroll } = useBlockScroll();
 
   useEffect(() => {
     setShowModal(isOpen);
+    if (isOpen) blockScroll();
+    if (!isOpen) allowScroll();
   }, [isOpen]);
 
   const handleClose = useCallback(() => {
