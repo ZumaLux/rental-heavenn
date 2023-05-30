@@ -37,6 +37,7 @@ code {
 .page-container {
   min-height: 100vh;
   padding-top: 4rem;
+  background: var(--dirty-white);
 }
 body {
 }

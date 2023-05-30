@@ -10,6 +10,7 @@ import AddCar from "./modals/AddCar";
 import EditCar from "./modals/EditCar";
 import Contacts from "./pages/Contacts";
 import RentCar from "./modals/RentCar";
+import Rentals from "./pages/Rentals";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/:id" element={<SingleCar />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/rentals" element={<Rentals />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
       <AddCar />

@@ -74,14 +74,19 @@ const SingleCar = () => {
       </div>
 
       <div className="single-car__basic-info-container">
-        <h1 className="single-car__basic-info-title">
+        {/* <h1 className="single-car__basic-info-title">
           {data.brand} {data.model}
-        </h1>
+        </h1> */}
         <div className="single-car__basic-info">
           <div className="img-container">
             <img src={data.image} alt="image" />
           </div>
           <div className="info-container">
+            <div className="title">
+              <h1>
+                {data.brand} {data.model}
+              </h1>
+            </div>
             <div className="info">
               <p>
                 <CalenadrIcon />
@@ -131,7 +136,10 @@ const SingleCar = () => {
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam libero possimus totam,
             aliquam neque unde iste, necessitatibus tenetur alias pariatur tempore numquam omnis
-            quam veniam sapiente quis iusto, nesciunt quo?
+            quam veniam sapiente quis iusto, nesciunt quo? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Magnam libero possimus totam, aliquam neque unde iste, necessitatibus
+            tenetur alias pariatur tempore numquam omnis quam veniam sapiente quis iusto, nesciunt
+            quo?
           </p>
         </div>
       </div>
