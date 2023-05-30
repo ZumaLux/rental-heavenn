@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className="nav">
+      <nav className={`nav ${navActive && "active"}`}>
         <div className="nav__logo">
           <Link to="/">
             <img src={logo} alt="" />
