@@ -83,16 +83,7 @@ const dbElements = [
 ];
 
 const Cars = () => {
-  const {
-    carList,
-    setCarList,
-    IsLoading,
-    setIsLoading,
-    error,
-    setError,
-    triggerFetch,
-    setTriggerFetch,
-  } = useCarContext();
+  const { carList, setCarList, IsLoading, setIsLoading, error, setError } = useCarContext();
   useFetch(collection_cars, carList, setCarList, setIsLoading, setError);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");

@@ -1,0 +1,53 @@
+.table-row {
+  width: fit-content;
+  display: flex;
+  margin: 0 auto;
+  padding: 0.5rem;
+  border-bottom: 2px solid rgba(155, 155, 155, 0.1);
+}
+.table-row.header {
+  border-top: 2px solid rgba(58, 58, 58, 0.8);
+  border-bottom: 2px solid rgba(58, 58, 58, 0.8);
+  font-weight: bold;
+}
+
+.table-row:nth-child(even) {
+  background-color: rgba(212, 239, 255, 0.2);
+}
+
+.table-row .element {
+  min-width: 150px;
+  padding: 1rem;
+}
+
+.element.wider {
+  width: 200px;
+}
+.element.shorter {
+  min-width: 100px;
+}
+.element.center {
+  text-align: center;
+}
+.element.right {
+  text-align: right;
+}
+.element.bold {
+  font-weight: bold;
+}
+.element.icons svg {
+  scale: 1.3;
+  margin: 0 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.element.icons svg:hover {
+  scale: 1.4;
+  transition: 0.3s;
+}
+/* .element.icons svg:nth-child(2) {
+  color: orange;
+}
+.element.icons svg:nth-child(3) {
+  color: red;
+} */

@@ -48,13 +48,15 @@ const RentCar = () => {
   const onSubmit = (e) => {
     // submit info
     const rental = {
-      name: e.target.name.value,
-      surname: e.target.surname.value,
-      email: e.target.email.value,
-      phone: e.target.phone.value,
+      customerName: e.target.name.value,
+      customerSurname: e.target.surname.value,
+      customerEmail: e.target.email.value,
+      customerPhone: e.target.phone.value,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
       rentedCarId: editData.id,
+      rentedCarBrand: editData.brand,
+      rentedCarModel: editData.model,
       totalPrice: getTotalPrice,
     };
 

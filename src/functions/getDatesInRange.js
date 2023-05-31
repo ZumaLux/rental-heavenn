@@ -2,7 +2,6 @@ import moment from "moment/moment";
 
 export const getDatesInRange = (start, end) => {
   // convert epoch(date in seconds) to date
-  // const sDate = new Date(start * 1000);
   const startDate = moment(start * 1000);
   const endDate = moment(end * 1000);
 

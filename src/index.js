@@ -7,6 +7,7 @@ import AuthProvider from "./context/authContext";
 import FormProvider from "./context/formContext";
 import ModalProvider from "./context/modalContext";
 import CarProvider from "./context/carContext";
+import RentalProvider from "./context/rentalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,11 +15,13 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <CarProvider>
-          <ModalProvider>
-            <FormProvider>
-              <App />
-            </FormProvider>
-          </ModalProvider>
+          <RentalProvider>
+            <ModalProvider>
+              <FormProvider>
+                <App />
+              </FormProvider>
+            </ModalProvider>
+          </RentalProvider>
         </CarProvider>
       </AuthProvider>
     </BrowserRouter>
