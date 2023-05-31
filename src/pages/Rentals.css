@@ -1,4 +1,19 @@
 .rentals-table {
-  padding: 3rem 3rem;
+  padding: 0rem 3rem;
   overflow-x: auto;
+  /* background: var(--blue-v1); */
+  height: 100vh;
+}
+
+.rentals-table_nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 3rem 1rem 3rem;
+}
+.rentals-table_nav .search-bar {
+  width: 300px;
+}
+.rentals-table_nav .search-bar > div {
+  border: 1px solid black;
 }
