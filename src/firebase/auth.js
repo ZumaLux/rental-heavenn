@@ -1,6 +1,7 @@
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "./config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 // REGISTER USER -FIREBASE-
 export const registerUser = async (email, password) => {
@@ -41,3 +42,16 @@ export async function createUserDetails(path, user, uid) {
     console.log(err.message);
   }
 }
+
+// AUTH WITH GOOGLE
+export async function authWithGoogle() {
+  const provider = new GoogleAuthProvider();
+  // const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  return signInWithPopup(auth, provider).then((res) => console.log(""));
+  // .then((result) => {
+  //   return result;
+  // });
+}
+
+// AUTH WITH GITHUB
+export async function authWithGithub() {}

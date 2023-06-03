@@ -3,6 +3,7 @@ import { auth, db } from "../firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { collection_users } from "../firebase/variables";
+// import { EmailAuthProvider, getAuth, reauthenticateWithCredential } from "firebase/auth";
 
 const AuthContext = createContext();
 
@@ -15,6 +16,7 @@ const AuthProvider = ({ children }) => {
       const docRef = doc(db, collection_users, user.uid);
       const userDetails = await getDoc(docRef);
 
+      console.log("auth user ", user);
       setCurrentUser({ ...userDetails.data(), uid: user.uid });
     });
   }, []);
