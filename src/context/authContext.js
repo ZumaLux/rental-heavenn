@@ -3,7 +3,6 @@ import { auth, db } from "../firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { collection_users } from "../firebase/variables";
-// import { EmailAuthProvider, getAuth, reauthenticateWithCredential } from "firebase/auth";
 
 const AuthContext = createContext();
 

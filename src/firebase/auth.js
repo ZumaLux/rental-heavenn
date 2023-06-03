@@ -1,7 +1,12 @@
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "./config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAdditionalUserInfo,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 // REGISTER USER -FIREBASE-
 export const registerUser = async (email, password) => {
@@ -46,12 +51,28 @@ export async function createUserDetails(path, user, uid) {
 // AUTH WITH GOOGLE
 export async function authWithGoogle() {
   const provider = new GoogleAuthProvider();
-  // const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-  return signInWithPopup(auth, provider).then((res) => console.log(""));
-  // .then((result) => {
-  //   return result;
-  // });
+  return signInWithPopup(auth, provider).then((res) => {
+    if (!res) return;
+    const isNewUser = getAdditionalUserInfo(res).isNewUser;
+    if (isNewUser) {
+      console.log("New Google Account created!");
+      return { user: res.user, isNewUser: true };
+    }
+    console.log("Login to existing google account!");
+    return { user: res.user, isNewUser: false };
+  });
 }
 
 // AUTH WITH GITHUB
-export async function authWithGithub() {}
+export async function authWithGithub() {
+  const provider = new GithubAuthProvider();
+  return signInWithPopup(auth, provider).then((res) => {
+    if (!res) return;
+    const isNewUser = getAdditionalUserInfo(res).isNewUser;
+    if (isNewUser) {
+      console.log("New Github Account created!");
+    }
+    console.log("Login to existing github account!");
+    return { user: res.user, isNewUser: isNewUser };
+  });
+}
