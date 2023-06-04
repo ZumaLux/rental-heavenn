@@ -14,6 +14,7 @@ const LoginForm = () => {
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
 
+  // LOGIN
   const login = async (e) => {
     e.preventDefault();
     if (currentUser) {
@@ -25,13 +26,14 @@ const LoginForm = () => {
     e.target.reset();
   };
 
+  // LOGIN - GOOGLE
   const loginWithGoogle = () => {
     if (currentUser) {
       console.log("Already logged in!");
       return;
     }
     authWithGoogle().then((res) => {
-      if (res.isNewUser) {
+      if (res?.isNewUser) {
         const user = {
           username: res.user.displayName,
           email: res.user.email,
@@ -42,13 +44,14 @@ const LoginForm = () => {
     });
   };
 
+  // LOGIN - GITHUB
   const loginWithGithub = () => {
     if (currentUser) {
       console.log("Already logged in!");
       return;
     }
     authWithGithub().then((res) => {
-      if (res.isNewUser) {
+      if (res?.isNewUser) {
         const user = {
           username: res.user.displayName,
           email: res.user.email,

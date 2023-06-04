@@ -18,6 +18,7 @@ const RegisterForm = () => {
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
 
+  // REGISTER
   const register = async (e) => {
     e.preventDefault();
     if (currentUser) {
@@ -25,13 +26,9 @@ const RegisterForm = () => {
       return;
     }
     const user = {
-      // name: e.target.name.value,
-      // surname: e.target.surname.value,
       username: e.target.name.value + " " + e.target.surname.value,
       email: e.target.email.value,
       role: "user",
-      // phone: e.target.phone.value,
-      // permissons: "user",
     };
     const registerResult = await registerUser(e.target.email.value, e.target.password.value);
     if (registerResult) {
@@ -40,13 +37,14 @@ const RegisterForm = () => {
     }
   };
 
+  // REGISTER - GOOGLE
   const registerWithGoogle = () => {
     if (currentUser) {
       console.log("Already logged in!");
       return;
     }
     authWithGoogle().then((res) => {
-      if (res.isNewUser) {
+      if (res?.isNewUser) {
         const user = {
           username: res.user.displayName,
           email: res.user.email,
@@ -57,13 +55,14 @@ const RegisterForm = () => {
     });
   };
 
+  // REGISTER - GITHUB
   const registerWithGithub = () => {
     if (currentUser) {
       console.log("Already logged in!");
       return;
     }
     authWithGithub().then((res) => {
-      if (res.isNewUser) {
+      if (res?.isNewUser) {
         const user = {
           username: res.user.displayName,
           email: res.user.email,
