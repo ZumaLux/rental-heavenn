@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import "./Home.css";
-import { useAuthContext } from "../context/authContext";
-import { signOutUser } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Feature from "../components/Feature";
 import { AiFillCar as CarIcon } from "react-icons/ai";
@@ -12,11 +10,7 @@ import Button from "../components/Button";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { currentUser } = useAuthContext();
 
-  useEffect(() => {
-    console.log("user home: ", currentUser);
-  }, [currentUser]);
   return (
     <div className="page-container">
       <section className="home-header">
@@ -66,9 +60,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <p>{currentUser?.uid}</p>
-      <button onClick={() => signOutUser()}>Sign out</button>
     </div>
   );
 };

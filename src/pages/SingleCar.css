@@ -36,10 +36,6 @@
 }
 
 /* --- BASIC INFO --- */
-.single-car__basic-info-title {
-  padding-bottom: 1rem;
-}
-
 .single-car__basic-info-container {
   width: 100%;
   margin-top: 8rem;

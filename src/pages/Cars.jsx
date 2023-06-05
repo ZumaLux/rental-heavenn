@@ -13,6 +13,7 @@ import Sidebar from "../components/Sidebar";
 import { useModalContext } from "../context/modalContext";
 import { HiPlus as PlusIcon } from "react-icons/hi";
 import { useCarContext } from "../context/carContext";
+import { useAuthContext } from "../context/authContext";
 
 // use it while developing
 const dbElements = [
@@ -88,6 +89,7 @@ const Cars = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
+  const { currentUser } = useAuthContext();
 
   const { openAddModal } = useModalContext();
 
@@ -132,7 +134,13 @@ const Cars = () => {
       </section>
       <Sidebar
         btnList={[
-          { label: "Add Car", onClick: () => openAddModal(), icon: <PlusIcon />, color: "orange" },
+          {
+            label: "Add Car",
+            onClick: () => openAddModal(),
+            show: currentUser?.role === "admin",
+            icon: <PlusIcon />,
+            color: "orange",
+          },
         ]}
       />
     </div>

@@ -5,18 +5,22 @@ import logo from "../../assets/rental-heaven-logo.png";
 import { FaBars as BurgirIcon } from "react-icons/fa";
 import { CgClose as BurgirClose } from "react-icons/cg";
 import useBlockScroll from "../../hooks/useBlockScroll";
+import { useAuthContext } from "../../context/authContext";
+import { signOutUser } from "../../firebase/auth";
 
 const navLinks = [
-  { path: "/", title: "Home" },
-  { path: "/cars", title: "Cars" },
-  { path: "/contacts", title: "Contacts" },
-  { path: "/rentals", title: "Rentals" },
-  { path: "/auth", title: "Sign In" },
+  { path: "/", title: "Home", accessRole: "user" },
+  { path: "/cars", title: "Cars", accessRole: "user" },
+  { path: "/contacts", title: "Contacts", accessRole: "user" },
+  { path: "/rentals", title: "Rentals", accessRole: "admin" },
+  { path: "/auth", title: "Sign In", accessRole: "none" },
 ];
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
+  const [subNavActive, setSubNavActive] = useState(false);
   const { blockScroll, allowScroll } = useBlockScroll();
+  const { currentUser } = useAuthContext();
 
   // open/close nav
   const toggleNav = () => {
@@ -29,6 +33,19 @@ const Navbar = () => {
     allowScroll();
   };
 
+  // const test = () => {
+  //   const list = [];
+  //   navLinks.forEach((link) => {
+  //     if (
+  //       currentUser?.role === link?.accessRole ||
+  //       link?.accessRole === "user" ||
+  //       (!currentUser && link?.accessRole === "none")
+  //     )
+  //       list.push(link);
+  //   });
+  //   return list;
+  // };
+
   return (
     <header>
       <nav className={`nav ${navActive && "active"}`}>
@@ -39,11 +56,37 @@ const Navbar = () => {
         </div>
         <div className="nav__links-container">
           <div className={`nav-links ${!navActive && "nav-hidden"}`}>
-            {navLinks.map((link, i) => (
-              <CustomLink key={i} to={link.path} onClick={() => closeNav()}>
-                {link.title}
+            <CustomLink to={"/"} onClick={() => closeNav()}>
+              Home
+            </CustomLink>
+            <CustomLink to={"/cars"} onClick={() => closeNav()}>
+              Cars
+            </CustomLink>
+            <CustomLink to={"/contacts"} onClick={() => closeNav()}>
+              Contacts
+            </CustomLink>
+            {currentUser?.role === "admin" && (
+              <CustomLink to={"/rentals"} onClick={() => closeNav()}>
+                Rentals
               </CustomLink>
-            ))}
+            )}
+            {!currentUser && (
+              <CustomLink to={"/auth"} onClick={() => closeNav()}>
+                Sign in
+              </CustomLink>
+            )}
+            {currentUser && (
+              <div
+                className="user-profile"
+                onMouseEnter={() => setSubNavActive(true)}
+                onMouseLeave={() => setSubNavActive(false)}
+              >
+                <li className="display-name">{currentUser?.username}</li>
+                <ul className={`sub-nav ${!subNavActive ? "hidden" : ""}`}>
+                  <li onClick={() => signOutUser()}>Sign Out</li>
+                </ul>
+              </div>
+            )}
           </div>
           <div className="burgir-menu" onClick={() => toggleNav()}>
             {navActive ? <BurgirClose /> : <BurgirIcon />}

@@ -16,10 +16,12 @@ import { BsPersonFill as SeatIcon } from "react-icons/bs";
 import { TbManualGearbox as GearboxIcon } from "react-icons/tb";
 import { GiCarDoor as DoorIcon } from "react-icons/gi";
 import { TbAirConditioning as AcIcon } from "react-icons/tb";
+import { useAuthContext } from "../context/authContext";
 
 const SingleCar = () => {
   const { id } = useParams();
   const { openEditModal, setEditData } = useModalContext();
+  const { currentUser } = useAuthContext();
   const { carList, setCarList } = useCarContext();
   const { data, isLoading, error } = useFetchById(collection_cars, id);
   const { openRentModal } = useModalContext();
@@ -56,6 +58,18 @@ const SingleCar = () => {
     });
   };
 
+  const handleRent = () => {
+    if (currentUser?.role === "admin") {
+      alert("As an admin you are unable to use this feature. Please use another account!");
+    } else if (currentUser) {
+      openRentModal();
+    } else {
+      if (window.confirm("You need to login first! Go to login?")) {
+        navigate("/auth");
+      }
+    }
+  };
+
   return (
     <div className="page-container">
       <div ref={headerRef} className="single-car__header">
@@ -68,15 +82,12 @@ const SingleCar = () => {
             {data.discountPrice}
           </div>
           <div className="rent-btn">
-            <Button label="Rent now" onClick={() => openRentModal()} />
+            <Button label="Rent now" onClick={() => handleRent()} />
           </div>
         </div>
       </div>
 
       <div className="single-car__basic-info-container">
-        {/* <h1 className="single-car__basic-info-title">
-          {data.brand} {data.model}
-        </h1> */}
         <div className="single-car__basic-info">
           <div className="img-container">
             <img src={data.image} alt="image" />

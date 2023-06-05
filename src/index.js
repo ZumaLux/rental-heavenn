@@ -12,8 +12,8 @@ import RentalProvider from "./context/rentalContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
         <CarProvider>
           <RentalProvider>
             <ModalProvider>
@@ -23,7 +23,7 @@ root.render(
             </ModalProvider>
           </RentalProvider>
         </CarProvider>
-      </AuthProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

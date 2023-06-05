@@ -69,6 +69,26 @@ nav {
   color: white;
 }
 
+.nav-links .user-profile {
+  color: var(--red);
+  cursor: pointer;
+  position: relative;
+}
+.nav-links .user-profile .sub-nav {
+  position: absolute;
+  background: var(--dark-blue);
+  border-radius: 10px;
+  width: 100%;
+}
+.nav-links .user-profile .display-name {
+  color: var(--red);
+}
+
+.sub-nav.hidden {
+  visibility: hidden;
+  transition: 0.1s;
+}
+
 @media only screen and (max-width: 768px) {
   nav {
     padding: 0.5rem 1rem;
