@@ -7,9 +7,11 @@ import "./Rentals.css";
 import { CgArrowsV as ArrowsIcon } from "react-icons/cg";
 import SearchBar from "../components/SearchBar";
 import { searchItems, sortItems } from "../functions/sortAndSearch";
+import Error from "../modals/Error";
+import Loading from "../components/Loading";
 
 const Rentals = () => {
-  const { rentalList, setRentalList, IsLoading, setIsLoading, error, setError } =
+  const { rentalList, setRentalList, isLoading, setIsLoading, error, setError } =
     useRentalContext();
   useFetch(collection_rentals, rentalList, setRentalList, setIsLoading, setError);
 
@@ -29,6 +31,7 @@ const Rentals = () => {
 
   return (
     <div className="page-container">
+      <Error error={error} />
       <div className="rentals-table_nav">
         <div className="search-bar">
           <SearchBar setSearchQuery={(value) => setSearchQuery(value)} />
@@ -83,6 +86,7 @@ const Rentals = () => {
         </div>
 
         <div>
+          <Loading isLoading={isLoading} />
           {sortedData?.map((rental) => (
             <TableRow key={rental.id} data={rental} />
           ))}

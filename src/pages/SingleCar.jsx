@@ -17,13 +17,14 @@ import { TbManualGearbox as GearboxIcon } from "react-icons/tb";
 import { GiCarDoor as DoorIcon } from "react-icons/gi";
 import { TbAirConditioning as AcIcon } from "react-icons/tb";
 import { useAuthContext } from "../context/authContext";
+import Error from "../modals/Error";
 
 const SingleCar = () => {
   const { id } = useParams();
   const { openEditModal, setEditData } = useModalContext();
   const { currentUser } = useAuthContext();
   const { carList, setCarList } = useCarContext();
-  const { data, isLoading, error } = useFetchById(collection_cars, id);
+  const { data, error } = useFetchById(collection_cars, id);
   const { openRentModal } = useModalContext();
   const headerRef = useRef();
   const navigate = useNavigate();
@@ -38,7 +39,6 @@ const SingleCar = () => {
       }
     };
 
-    // window.onscroll = () => shrinkHeaderOnScroll();
     window.addEventListener("scroll", shrinkHeaderOnScroll);
     return () => {
       window.removeEventListener("scroll", shrinkHeaderOnScroll);
@@ -72,10 +72,11 @@ const SingleCar = () => {
 
   return (
     <div className="page-container">
+      <Error error={error} />
       <div ref={headerRef} className="single-car__header">
-        <h1 className="single-car__header-title">
+        <h2 className="single-car__header-title">
           {data.brand} {data.model}
-        </h1>
+        </h2>
         <div className="single-car__rent-btn-container">
           <div className="rent-price">
             {data.discount > 0 && <s style={{ color: "red" }}>$ {data.price}</s>} $
@@ -94,9 +95,9 @@ const SingleCar = () => {
           </div>
           <div className="info-container">
             <div className="title">
-              <h1>
+              <h3>
                 {data.brand} {data.model}
-              </h1>
+              </h3>
             </div>
             <div className="info">
               <p>
@@ -130,12 +131,12 @@ const SingleCar = () => {
 
       <div className="single-car__details-container">
         <div className="single-car__details">
-          <h1 className="single-car__details-heading">Details</h1>
+          <h2 className="single-car__details-heading">Details</h2>
           {fields.map((field) => {
             return (
               <div className="row-container" key={field}>
                 <div className="row-title">
-                  <b>{field.toUpperCase()}</b>
+                  <h4>{field.toUpperCase()}</h4>
                 </div>
                 <div className="row-info">{data[field]}</div>
               </div>
@@ -143,7 +144,7 @@ const SingleCar = () => {
           })}
         </div>
         <div className="single-car__description">
-          <h1 className="single-car__details-heading">Description</h1>
+          <h2 className="single-car__details-heading">Description</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam libero possimus totam,
             aliquam neque unde iste, necessitatibus tenetur alias pariatur tempore numquam omnis

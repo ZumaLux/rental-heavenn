@@ -50,11 +50,6 @@
   object-fit: contain;
 }
 
-.contacts-top .top-right .title {
-  font-size: xx-large;
-  margin: 2rem 0;
-}
-
 .contacts-bottom {
   display: flex;
   font-family: var(--font-family);
@@ -68,11 +63,12 @@
 }
 .contacts-bottom .bot-left .title1 {
   margin-bottom: 1rem;
-  font-size: xx-large;
+  /* font-size: 2rem; */
 }
 .contacts-bottom .bot-left .title2 {
   margin-bottom: 3rem;
-  font-size: larger;
+  /* font-size: 1.3rem; */
+  font-style: italic;
 }
 
 .contacts-bottom .bot-left .icons * {
@@ -111,7 +107,6 @@
   .contacts-top {
     flex-direction: column-reverse;
     align-items: center;
-    font-size: 0.9rem;
   }
   .contacts-top .top-left {
     width: 80%;
@@ -127,7 +122,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: 0.9rem;
   }
   .contacts-bottom .bot-left {
     width: 80%;
@@ -163,5 +157,11 @@
   .contacts-bottom .bot-right {
     width: 100%;
     padding: 0;
+  }
+  .contacts-bottom .bot-left .title1 {
+    /* font-size: 1.5rem; */
+  }
+  .contacts-bottom .bot-left .title2 {
+    /* font-size: 1rem; */
   }
 }

@@ -91,7 +91,6 @@
 @media screen and (max-width: 640px) {
   .auth-page {
     position: relative;
-    font-size: 0.9rem;
   }
   .auth-page__form {
     position: absolute;

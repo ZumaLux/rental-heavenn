@@ -20,7 +20,7 @@ const Home = () => {
             RENT NOW
           </button>
         </div>
-        <h5 className="home-header__author-name">Photo by Lukas Žvikas</h5>
+        <h5 className="author-name">Photo by Lukas Žvikas</h5>
       </section>
 
       <section className="home-features">
@@ -44,10 +44,10 @@ const Home = () => {
       <section className="home-dark-lovers">
         <div className="home-dark-lovers__image-container">
           <img src={jeep} alt="" />
-          <p className="home-dark-lovers__author-name">Photo by Kam Pratt</p>
+          <h5 className="author-name">Photo by Kam Pratt</h5>
         </div>
         <div className="home-dark-lovers__text-container">
-          <h1>Dark Lovers</h1>
+          <h2>Dark Lovers</h2>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptas unde magni
             laborum deserunt ratione, illum vitae, explicabo, illo aliquam distinctio suscipit

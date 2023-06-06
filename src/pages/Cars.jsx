@@ -54,7 +54,7 @@ const Cars = () => {
           </div>
         </div>
         <div className="cars-grid__container">
-          <Loading show={isLoading} />
+          <Loading isLoading={isLoading} />
           <Error error={error} />
 
           {slicedData && (

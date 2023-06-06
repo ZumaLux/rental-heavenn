@@ -73,7 +73,7 @@
 .modal__body {
   max-height: 550px;
   margin: 5rem 0 5rem 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .fields-container {

@@ -1,13 +1,15 @@
 import React from "react";
-import BounceLoader from "react-spinners/BounceLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 
-const Loading = ({ show = Boolean }) => {
+const Loading = ({ isLoading = Boolean }) => {
   return (
-    <BounceLoader
-      color="white"
-      loading={show}
+    <BeatLoader
+      color="var(--blue-v1)"
+      loading={isLoading}
+      margin={5}
       cssOverride={{
-        margin: "auto",
+        display: "flex",
+        justifyContent: "center",
       }}
     />
   );

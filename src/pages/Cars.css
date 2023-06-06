@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 420px) {
   .cars-grid__content {
-    --grid-item--min-width: 12rem;
+    --grid-item--min-width: auto !important;
   }
 }
 

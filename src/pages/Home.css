@@ -23,10 +23,6 @@
   color: var(--dirty-white);
 }
 
-.home-header h1 {
-  font-size: 35px;
-}
-
 .home-header .rent-btn {
   margin-top: 50px;
   padding: 1rem 2rem;
@@ -42,16 +38,6 @@
 .home-header .rent-btn:hover {
   scale: 0.95;
   box-shadow: 3px 3px 3px black;
-}
-
-.home-header__author-name {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  color: var(--orange);
-  font-style: italic;
-  font-size: 0.8rem;
-  font-weight: lighter;
 }
 
 .home-features {
@@ -94,9 +80,9 @@
   color: var(--dirty-white);
 }
 
-.home-dark-lovers__text-container h1 {
+.home-dark-lovers__text-container h2 {
   padding: 2rem 0 2rem 0;
-  font-size: 40px;
+  /* font-size: 30px; */
 }
 
 .home-dark-lovers__text-container p {
@@ -106,16 +92,7 @@
 
 .home-dark-lovers .see-more-btn {
   width: 300px;
-}
-
-.home-dark-lovers__author-name {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  color: var(--orange);
-  font-style: italic;
-  font-size: 0.8rem;
-  font-weight: lighter;
+  margin: 1rem 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -161,31 +138,18 @@
   .home-dark-lovers__text-container {
     padding: 0;
   }
-
   .home-dark-lovers .see-more-btn {
     width: 100%;
+  }
+
+  .home-header .rent-btn {
+    font-size: 0.7rem;
+    padding: 0.7rem 1.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .home-header {
     background-position: center;
-  }
-
-  .home-header h1 {
-    font-size: 28px;
-  }
-  .home-header .see-more-btn {
-    padding: 0.5rem 1rem;
-  }
-  .home-header__author-name {
-    font-size: 0.6rem;
-  }
-  .home-header .see-more-btn {
-    font-size: 0.8rem;
-  }
-
-  .home-dark-lovers__text-container p {
-    font-size: 0.8rem;
   }
 }

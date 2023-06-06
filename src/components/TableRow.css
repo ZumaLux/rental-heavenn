@@ -25,7 +25,6 @@
 }
 
 .table-row:nth-child(even) {
-  /* background-color: rgb(227, 243, 253); */
   background-color: rgb(233, 233, 233);
 }
 
@@ -59,9 +58,13 @@
   scale: 1.4;
   transition: 0.3s;
 }
-/* .element.icons svg:nth-child(2) {
-  color: orange;
+
+@media screen and (max-width: 640px) {
+  .table-row {
+    padding: 0rem;
+    font-size: 0.8rem;
+  }
+  .table-row .element {
+    padding: 0.8rem;
+  }
 }
-.element.icons svg:nth-child(3) {
-  color: red;
-} */

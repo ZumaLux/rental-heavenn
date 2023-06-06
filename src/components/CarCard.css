@@ -97,7 +97,10 @@
   color: red;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px) {
+  .car-card {
+    font-size: 0.9rem;
+  }
   .car-card {
     height: fit-content;
   }
@@ -107,6 +110,7 @@
     font-size: 0.8em;
   }
 }
+
 @media screen and (max-width: 360px) {
   .car-card__extras {
     flex-direction: column;

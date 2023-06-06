@@ -46,3 +46,41 @@ html {
 }
 #root {
 }
+
+h1 {
+  font-size: 40px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 20px;
+}
+.author-name {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: var(--orange);
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 640px) {
+  h1 {
+    font-size: 35px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+  .author-name {
+    font-size: 0.8rem;
+  }
+}

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./Error.css";
 import Modal from "./Modal";
 
 const Error = ({ error }) => {
   const [openError, setOpenError] = useState(error);
+
+  const bodyComponent = <p>{error}</p>;
 
   useEffect(() => {
     if (error === null) setOpenError(false);
@@ -13,7 +14,8 @@ const Error = ({ error }) => {
   return (
     <Modal
       title={"Error!"}
-      subtitle={error}
+      subtitle=""
+      body={bodyComponent}
       buttonLabel="Ok"
       buttonType="button"
       buttonClick={() => setOpenError(false)}

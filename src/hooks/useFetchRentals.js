@@ -9,7 +9,7 @@ const useFetchRentalDates = (colName = "", data) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!data || !colName) return;
+        if (!data || colName !== "") return;
         const collectionRef = collection(db, colName);
         const q = query(collectionRef, where("rentedCarId", "==", data?.id));
         const querySnapshot = await getDocs(q);
