@@ -14,77 +14,11 @@ import { useModalContext } from "../context/modalContext";
 import { HiPlus as PlusIcon } from "react-icons/hi";
 import { useCarContext } from "../context/carContext";
 import { useAuthContext } from "../context/authContext";
-
-// use it while developing
-const dbElements = [
-  {
-    id: 1,
-    ac: true,
-    brand: "Citroen",
-    discount: 0,
-    discountPrice: 26,
-    doors: 4,
-    extras: "",
-    fuel: "diesel",
-    gearbox: "manual",
-    img: "https://www.topgear.com/sites/default/files/cars-car/image/2020/12/_mg_2297.jpg",
-    model: "C4",
-    price: 26,
-    seats: 5,
-    year: 2021,
-  },
-  {
-    id: 2,
-    ac: true,
-    brand: "Audi",
-    discount: 10,
-    discountPrice: 18,
-    doors: 4,
-    extras: "",
-    fuel: "diesel",
-    gearbox: "manual",
-    img: "https://www.topgear.com/sites/default/files/cars-car/image/2020/12/_mg_2297.jpg",
-    model: "A4",
-    price: 20,
-    seats: 5,
-    year: 2020,
-  },
-  {
-    id: 3,
-    ac: true,
-    brand: "BMW",
-    discount: 0,
-    discountPrice: 25,
-    doors: 4,
-    extras: "",
-    fuel: "diesel",
-    gearbox: "manual",
-    img: "https://www.topgear.com/sites/default/files/cars-car/image/2020/12/_mg_2297.jpg",
-    model: "X5",
-    price: 25,
-    seats: 5,
-    year: 2018,
-  },
-  {
-    id: 4,
-    ac: true,
-    brand: "BMW",
-    discount: 0,
-    discountPrice: 25,
-    doors: 4,
-    extras: "",
-    fuel: "diesel",
-    gearbox: "manual",
-    img: "https://www.topgear.com/sites/default/files/cars-car/image/2020/12/_mg_2297.jpg",
-    model: "X3",
-    price: 25,
-    seats: 5,
-    year: 2018,
-  },
-];
+import Loading from "../components/Loading";
+import Error from "../modals/Error";
 
 const Cars = () => {
-  const { carList, setCarList, IsLoading, setIsLoading, error, setError } = useCarContext();
+  const { carList, setCarList, isLoading, setIsLoading, error, setError } = useCarContext();
   useFetch(collection_cars, carList, setCarList, setIsLoading, setError);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
@@ -102,7 +36,6 @@ const Cars = () => {
     console.log("data=", carList);
   }, [carList]);
 
-  // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error}</div>;
 
   return (
@@ -120,18 +53,31 @@ const Cars = () => {
             />
           </div>
         </div>
-        <div className="cars-grid__content">
-          {slicedData && slicedData.map((car) => <CarCard key={car.id} {...car} />)}
-        </div>
-        <div className="cars-grid__pagination">
-          <Pagination
-            itemsPerPage={itemsPerPage}
-            totalItems={sortedItems.length}
-            currentPage={currentPage}
-            setCurrentPage={(value) => setCurrentPage(value)}
-          />
+        <div className="cars-grid__container">
+          <Loading show={isLoading} />
+          <Error error={error} />
+
+          {slicedData && (
+            <div className="cars-grid__content">
+              {slicedData.map((car) => (
+                <CarCard key={car.id} {...car} />
+              ))}
+            </div>
+          )}
+
+          {slicedData.length > 0 && (
+            <div className="cars-grid__pagination">
+              <Pagination
+                itemsPerPage={itemsPerPage}
+                totalItems={sortedItems.length}
+                currentPage={currentPage}
+                setCurrentPage={(value) => setCurrentPage(value)}
+              />
+            </div>
+          )}
         </div>
       </section>
+
       <Sidebar
         btnList={[
           {

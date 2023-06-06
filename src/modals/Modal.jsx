@@ -9,6 +9,8 @@ const Modal = ({
   subtitle = String,
   body = React.Element,
   buttonLabel = String,
+  buttonType = "submit",
+  buttonClick,
   isOpen = Boolean,
   onClose = Function,
   onSubmit = Function,
@@ -59,7 +61,7 @@ const Modal = ({
         </div>
         <div className="modal__body">{body}</div>
         <div className="modal__submit-btn">
-          <Button type="submit" label={buttonLabel} />
+          <Button type={buttonType} label={buttonLabel} onClick={buttonClick} />
         </div>
       </form>
     </div>

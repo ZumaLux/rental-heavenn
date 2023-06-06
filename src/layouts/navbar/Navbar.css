@@ -79,6 +79,8 @@ nav {
   background: var(--dark-blue);
   border-radius: 10px;
   width: 100%;
+  min-width: fit-content;
+  white-space: nowrap;
 }
 .nav-links .user-profile .display-name {
   color: var(--red);

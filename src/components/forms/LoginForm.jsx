@@ -40,6 +40,7 @@ const LoginForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
+        navigate("/");
       }
     });
   };
@@ -58,6 +59,7 @@ const LoginForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
+        navigate("/");
       }
     });
   };

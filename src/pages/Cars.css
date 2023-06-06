@@ -20,7 +20,10 @@
   padding: 1rem;
 }
 
-.cars-grid__content {
+.cars-grid__container {
+}
+
+.cars-grid__container .cars-grid__content {
   display: grid;
   grid-gap: var(--grid-layout-gap);
   text-align: center;

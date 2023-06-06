@@ -51,6 +51,7 @@ const RegisterForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
+        navigate("/");
       }
     });
   };
@@ -69,6 +70,7 @@ const RegisterForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
+        navigate("/");
       }
     });
   };

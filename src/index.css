@@ -16,8 +16,8 @@ code {
 
 :root {
   /*Fonts*/
-  /* --font-family: "Rubik", sans-serif; */
-  --font-family: "Roboto", sans-serif;
+  --font-family: "Rubik", sans-serif;
+  /* --font-family: "Roboto", sans-serif; */
 
   /*Colors*/
   --dark-blue: #282634;
@@ -39,7 +39,8 @@ code {
   padding-top: 4rem;
   background: var(--dirty-white);
 }
-body {
+body * {
+  font-family: var(--font-family);
 }
 html {
 }
