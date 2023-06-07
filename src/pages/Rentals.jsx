@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TableRow from "../components/TableRow";
 import useFetch from "../hooks/useFetch";
 import { collection_rentals } from "../firebase/variables";

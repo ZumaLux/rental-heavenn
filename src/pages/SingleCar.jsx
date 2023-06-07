@@ -47,7 +47,7 @@ const SingleCar = () => {
 
   useEffect(() => {
     setEditData(data);
-  }, [data]);
+  }, [data, setEditData]);
 
   const deleteCar = async () => {
     await deleteItem(collection_cars, data).then((confirm) => {
@@ -91,7 +91,7 @@ const SingleCar = () => {
       <div className="single-car__basic-info-container">
         <div className="single-car__basic-info">
           <div className="img-container">
-            <img src={data.image} alt="image" />
+            <img src={data.image} alt={data.brand} />
           </div>
           <div className="info-container">
             <div className="title">
@@ -161,6 +161,7 @@ const SingleCar = () => {
           {
             label: "Edit Car",
             onClick: () => openEditModal(),
+            show: currentUser?.role === "admin",
             icon: <EditIcon />,
             color: "orange",
             data: data,
@@ -168,6 +169,7 @@ const SingleCar = () => {
           {
             label: "Delete Car",
             onClick: () => deleteCar(),
+            show: currentUser?.role === "admin",
             icon: <DeleteIcon />,
             color: "red",
           },

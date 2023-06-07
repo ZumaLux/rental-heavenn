@@ -15,13 +15,11 @@ const useFetchRentalDates = (colName = "", data) => {
         const querySnapshot = await getDocs(q);
         let newDateList = [];
         console.log("get docs ", querySnapshot.docs[0]?.data());
-        querySnapshot.docs.map((item) => {
+        querySnapshot.docs.map((item) =>
           getDatesInRange(item.data().startDate.seconds, item.data().endDate.seconds).map(
-            (dateList) => {
-              newDateList = newDateList.concat(dateList);
-            }
-          );
-        });
+            (dateList) => (newDateList = newDateList.concat(dateList))
+          )
+        );
         setTakenDates(newDateList);
       } catch (error) {
         console.log("Error: ", error.message);
@@ -29,7 +27,7 @@ const useFetchRentalDates = (colName = "", data) => {
       }
     };
     fetchData();
-  }, [data]);
+  }, [data, colName]);
 
   return { takenDates };
 };

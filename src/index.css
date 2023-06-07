@@ -42,10 +42,6 @@ code {
 body * {
   font-family: var(--font-family);
 }
-html {
-}
-#root {
-}
 
 h1 {
   font-size: 40px;

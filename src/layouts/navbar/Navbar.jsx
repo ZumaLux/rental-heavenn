@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import logo from "../../assets/rental-heaven-logo.png";
@@ -7,14 +7,6 @@ import { CgClose as BurgirClose } from "react-icons/cg";
 import useBlockScroll from "../../hooks/useBlockScroll";
 import { useAuthContext } from "../../context/authContext";
 import { signOutUser } from "../../firebase/auth";
-
-const navLinks = [
-  { path: "/", title: "Home", accessRole: "user" },
-  { path: "/cars", title: "Cars", accessRole: "user" },
-  { path: "/contacts", title: "Contacts", accessRole: "user" },
-  { path: "/rentals", title: "Rentals", accessRole: "admin" },
-  { path: "/auth", title: "Sign In", accessRole: "none" },
-];
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);

@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const safeDocument = typeof document !== "undefined" ? document : {};
 
-export default () => {
+const useBlockScroll = () => {
   const scrollBlocked = useRef();
   const html = safeDocument.documentElement;
   const { body } = safeDocument;
@@ -43,3 +43,5 @@ export default () => {
 
   return { blockScroll, allowScroll };
 };
+
+export default useBlockScroll;

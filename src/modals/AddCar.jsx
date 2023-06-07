@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "./Modal";
 import { useModalContext } from "../context/modalContext";
 import { addItem } from "../firebase/crud";

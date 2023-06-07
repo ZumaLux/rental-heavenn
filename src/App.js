@@ -11,6 +11,7 @@ import EditCar from "./modals/EditCar";
 import Contacts from "./pages/Contacts";
 import RentCar from "./modals/RentCar";
 import Rentals from "./pages/Rentals";
+import ProtectedRoutes from "./layouts/navbar/ProtectedRoutes";
 
 function App() {
   return (
@@ -21,8 +22,10 @@ function App() {
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/:id" element={<SingleCar />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/rentals" element={<Rentals />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/rentals" element={<Rentals />} />
+        </Route>
       </Routes>
       <AddCar />
       <EditCar />

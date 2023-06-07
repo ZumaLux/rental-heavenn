@@ -20,7 +20,7 @@ const CalendarComponent = ({ takenDates, setStartDate, setEndDate }) => {
     console.log("dateRange: ", range);
     setStartDate(format(range[0].startDate, "MM/dd/yyyy"));
     setEndDate(format(range[0].endDate, "MM/dd/yyyy"));
-  }, [range]);
+  }, [range, setStartDate, setEndDate]);
 
   return (
     <div className="calendar-wrap">

@@ -11,6 +11,7 @@ const useFetch = (
 ) => {
   useEffect(() => {
     const fetchData = async () => {
+      console.log("it runs");
       if (listContext.length > 0) return;
       setIsLoading(true);
       try {
@@ -31,7 +32,7 @@ const useFetch = (
       }
     };
     fetchData();
-  }, []);
+  }, [colName, listContext?.length, setIsLoading, setError, setListContext]);
 };
 
 export default useFetch;

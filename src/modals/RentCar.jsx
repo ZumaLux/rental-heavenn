@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Modal from "./Modal";
 import { useModalContext } from "../context/modalContext";
 import { addItem } from "../firebase/crud";
@@ -43,7 +43,7 @@ const RentCar = () => {
 
   const getTotalPrice = useMemo(() => {
     return getNumberOfDays(startDate, endDate) * editData?.discountPrice;
-  }, [startDate, endDate]);
+  }, [startDate, endDate, editData?.discountPrice]);
 
   const onSubmit = (e) => {
     // submit info

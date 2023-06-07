@@ -10,10 +10,11 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) =
   }
 
   useEffect(() => {
+    console.log("pageN: ", pageNumbers.length);
     if (currentPage > pageNumbers.length) {
       setCurrentPage(1);
     }
-  }, [setCurrentPage]);
+  }, [setCurrentPage, currentPage, pageNumbers.length]);
 
   return (
     <div className="pagination">
@@ -23,7 +24,7 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) =
 
       {pageNumbers.map((number) => (
         <button
-          className={`${number == currentPage ? "active" : ""}`}
+          className={`${number === currentPage ? "active" : ""}`}
           key={number}
           onClick={() => setCurrentPage(number)}
         >

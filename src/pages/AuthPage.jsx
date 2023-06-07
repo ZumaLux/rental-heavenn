@@ -10,7 +10,7 @@ const AuthPage = () => {
   useEffect(() => {
     // resets back to login form
     closeRegister();
-  }, []);
+  }, [closeRegister]);
 
   return (
     <div className="page-container">

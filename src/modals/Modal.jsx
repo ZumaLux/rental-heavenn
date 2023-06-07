@@ -23,6 +23,7 @@ const Modal = ({
     setShowModal(isOpen);
     if (isOpen) blockScroll();
     if (!isOpen) allowScroll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleClose = useCallback(() => {
@@ -39,6 +40,7 @@ const Modal = ({
       onSubmit(e);
       handleClose();
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onSubmit]
   );
 
@@ -57,7 +59,7 @@ const Modal = ({
             </div>
           </h2>
 
-          <h5 className="modal__subtitle">{subtitle}</h5>
+          <h5 className="modal__subtitle">{subtitle && subtitle}</h5>
         </div>
         <div className="modal__body">{body}</div>
         <div className="modal__submit-btn">

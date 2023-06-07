@@ -24,7 +24,7 @@ const useFetchById = (colName = "", docId = "") => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [colName, docId]);
 
   return { data, isLoading, error };
 };
