@@ -50,8 +50,12 @@ const SingleCar = () => {
   }, [data, setEditData]);
 
   const deleteCar = async () => {
-    await deleteItem(collection_cars, data).then((confirm) => {
-      if (!confirm) return;
+    await deleteItem(collection_cars, data).then((res) => {
+      if (res.error) {
+        window.alert(res.error);
+        return;
+      }
+      if (!res.confirm) return;
       const newList = carList.filter((item) => item.id !== data.id);
       setCarList(newList);
       navigate("/cars");

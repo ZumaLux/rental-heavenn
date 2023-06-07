@@ -141,6 +141,9 @@ const EditCarModal = () => {
     };
 
     updateItem(collection_cars, car, editData.id).then((res) => {
+      if (res.error) {
+        window.alert(res.error);
+      }
       const itemIndex = carList.indexOf(carList.find((item) => item.id === res.id));
       const updatedList = [...carList];
       updatedList[itemIndex] = res;

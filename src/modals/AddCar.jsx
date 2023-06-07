@@ -104,6 +104,7 @@ function getYears() {
 const AddCarModal = () => {
   const { addModalActive, closeAddModal } = useModalContext();
   const { setCarList } = useCarContext();
+
   const onSubmit = (e) => {
     // submit info
     let price = parseFloat(e.target.price.value);
@@ -127,7 +128,10 @@ const AddCarModal = () => {
     };
 
     addItem(collection_cars, car).then((res) => {
-      if (!res) return;
+      if (res.error) {
+        window.alert(res.error);
+        return;
+      } else if (!res.status) return;
       getSingleItem(collection_cars, res.id).then((res) => {
         setCarList((current) => [...current, res]);
       });

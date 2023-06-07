@@ -36,8 +36,6 @@ const Cars = () => {
     console.log("data=", carList);
   }, [carList]);
 
-  // if (error) return <div>{error}</div>;
-
   return (
     <div className="page-container">
       <section className="cars-grid">

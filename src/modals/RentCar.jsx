@@ -61,7 +61,11 @@ const RentCar = () => {
     };
 
     addItem(collection_rentals, rental).then((res) => {
-      if (!res) return;
+      if (res.error) {
+        window.alert(res.error);
+        return;
+      }
+      if (!rentModalActive.status) return;
       console.log("car --> ", rental);
     });
   };
