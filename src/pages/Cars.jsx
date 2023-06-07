@@ -65,11 +65,11 @@ const Cars = () => {
             </div>
           )}
 
-          {slicedData.length > 0 && (
+          {carList.length > 0 && (
             <div className="cars-grid__pagination">
               <Pagination
                 itemsPerPage={itemsPerPage}
-                totalItems={sortedItems.length}
+                totalItems={carList.length}
                 currentPage={currentPage}
                 setCurrentPage={(value) => setCurrentPage(value)}
               />

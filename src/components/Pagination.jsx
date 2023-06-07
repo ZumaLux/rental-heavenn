@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./Pagination.css";
 
 const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) => {
-  const pageNumbers = [];
-
   //Calculates the number of pages
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const getPages = useMemo(() => {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }, [totalItems, itemsPerPage]);
 
   useEffect(() => {
-    console.log("pageN: ", pageNumbers.length);
-    if (currentPage > pageNumbers.length) {
+    if (currentPage > getPages.length) {
       setCurrentPage(1);
     }
-  }, [setCurrentPage, currentPage, pageNumbers.length]);
+  }, [setCurrentPage, currentPage, getPages.length]);
 
   return (
     <div className="pagination">
@@ -22,9 +23,9 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) =
         {"<<"}
       </button>
 
-      {pageNumbers.map((number) => (
+      {getPages.map((number) => (
         <button
-          className={`${number === currentPage ? "active" : ""}`}
+          className={`${number === Number(currentPage) ? "active" : ""}`}
           key={number}
           onClick={() => setCurrentPage(number)}
         >
@@ -33,7 +34,7 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) =
       ))}
 
       <button
-        onClick={() => (currentPage < pageNumbers.length ? setCurrentPage(currentPage + 1) : "")}
+        onClick={() => (currentPage < getPages.length ? setCurrentPage(currentPage + 1) : "")}
       >
         {">>"}
       </button>
