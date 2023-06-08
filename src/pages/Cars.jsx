@@ -67,7 +67,7 @@ const Cars = () => {
             <div className="cars-grid__pagination">
               <Pagination
                 itemsPerPage={itemsPerPage}
-                totalItems={carList.length}
+                totalItems={sortedItems.length}
                 currentPage={currentPage}
                 setCurrentPage={(value) => setCurrentPage(value)}
               />
