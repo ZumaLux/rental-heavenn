@@ -10,7 +10,8 @@ const AuthPage = () => {
   useEffect(() => {
     // resets back to login form
     closeRegister();
-  }, [closeRegister]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="page-container">

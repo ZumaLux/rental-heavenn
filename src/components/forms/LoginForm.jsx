@@ -13,23 +13,24 @@ const LoginForm = () => {
   const [isFirstRender, setIsFirstRender] = useState(true);
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
   // LOGIN
   const login = async (e) => {
     e.preventDefault();
     if (currentUser) {
-      console.log("Already logged in!");
+      setMessage("Already logged in!");
       return;
     }
     const loginResult = await loginUser(e.target.email.value, e.target.password.value);
-    if (loginResult) navigate("/");
-    e.target.reset();
+    if (loginResult.success) navigate("/");
+    else if (loginResult.message) setMessage(loginResult.message);
   };
 
   // LOGIN - GOOGLE
   const loginWithGoogle = () => {
     if (currentUser) {
-      console.log("Already logged in!");
+      setMessage("Already logged in!");
       return;
     }
     authWithGoogle().then((res) => {
@@ -40,7 +41,6 @@ const LoginForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
-        navigate("/");
       }
     });
   };
@@ -48,7 +48,7 @@ const LoginForm = () => {
   // LOGIN - GITHUB
   const loginWithGithub = () => {
     if (currentUser) {
-      console.log("Already logged in!");
+      setMessage("Already logged in!");
       return;
     }
     authWithGithub().then((res) => {
@@ -59,7 +59,6 @@ const LoginForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
-        navigate("/");
       }
     });
   };
@@ -100,6 +99,7 @@ const LoginForm = () => {
       isOpen={isLoginOpen}
       firstRender={isFirstRender}
       submitAction={login}
+      message={message}
     />
   );
 };

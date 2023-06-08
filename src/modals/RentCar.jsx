@@ -29,7 +29,8 @@ const inputFields = [
   {
     name: "Phone",
     element: "input",
-    type: "text",
+    type: "tel",
+    pattern: "[0-9]{10}",
     required: true,
   },
 ];
@@ -86,6 +87,7 @@ const RentCar = () => {
                 name={field.name.toLocaleLowerCase()}
                 placeholder={field.name}
                 required={field.required}
+                pattern={field.pattern}
               />
             </div>
           )}

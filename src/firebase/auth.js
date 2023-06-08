@@ -12,15 +12,15 @@ import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebas
 export const registerUser = async (email, password) => {
   try {
     const response = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("Registration successfull");
-    return response.user;
+    return { user: response.user, message: null };
   } catch (err) {
     if (err.code === "auth/email-already-in-use") {
-      console.log("Account with this email already exists!");
-    } else {
-      console.log(err.message);
+      return { user: null, message: "Account with this email already exists!" };
     }
-    return null;
+    if (err.code === "auth/weak-password") {
+      return { user: null, message: "Password should be at least 6 characters!" };
+    }
+    return { user: null, message: err.message };
   }
 };
 
@@ -28,25 +28,28 @@ export const registerUser = async (email, password) => {
 export const loginUser = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    console.log("Login successfull");
-    return true;
+    return { success: true, message: "Login successfull" };
   } catch (err) {
-    console.log(err.message);
+    if (err.code === "auth/user-not-found") {
+      return { success: false, message: "User does not exist!" };
+    }
+    if (err.code === "auth/wrong-password") {
+      return { success: false, message: "Incorrect password!" };
+    }
+    return { success: false, message: err.message };
   }
-  return false;
 };
 
 //SIGN OUT USER -FIREBASE-
 export async function signOutUser() {
   await signOut(auth);
-  console.log("Signed Out!");
 }
 
 // CREATE USER DETAILS -FIREBASE-
 export async function createUserDetails(path, user, uid) {
   try {
     await setDoc(doc(db, path, uid), { ...user });
-    console.log("User Details Added Successfully!");
+    // console.log("User Details Added Successfully!");
   } catch (err) {
     console.log(err.message);
   }
@@ -58,20 +61,19 @@ export async function authWithGoogle() {
   return signInWithPopup(auth, provider)
     .then((res) => {
       if (!res) return;
+      // new user
       const isNewUser = getAdditionalUserInfo(res).isNewUser;
       if (isNewUser) {
-        console.log("New Google Account created!");
         return { user: res.user, isNewUser: true };
       }
-      console.log("Login to existing google account!");
+      // existing user
       return { user: res.user, isNewUser: false };
     })
     .catch((err) => {
       if (err.code === "auth/account-exists-with-different-credential") {
-        console.log("Account with this email already exists!");
-      } else {
-        console.log(err.message);
+        return { user: null, isNewUser: false };
       }
+      return { user: null, isNewUser: false };
     });
 }
 
@@ -82,18 +84,18 @@ export async function authWithGithub() {
     .then((res) => {
       if (!res) return;
       const isNewUser = getAdditionalUserInfo(res).isNewUser;
-      if (isNewUser) {
-        console.log("New Github Account created!");
-      } else {
-        console.log("Login to existing github account!");
-      }
       return { user: res.user, isNewUser: isNewUser };
     })
     .catch((err) => {
       if (err.code === "auth/account-exists-with-different-credential") {
-        console.log("Account with this email already exists!");
-      } else {
-        console.log(err.message);
+        return {
+          user: null,
+          isNewUser: null,
+        };
       }
+      return {
+        user: null,
+        isNewUser: null,
+      };
     });
 }

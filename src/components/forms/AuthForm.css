@@ -48,6 +48,10 @@
   text-decoration: underline;
 }
 
+.auth-form__message {
+  color: red;
+}
+
 .auth-form__footer p {
   text-align: center;
   color: rgba(0, 0, 0, 0.4);
@@ -78,6 +82,80 @@
 .auth-form__footer :nth-child(3) {
   background: rgb(24, 24, 24);
   color: white;
+}
+
+/* Whole form */
+.animation {
+  animation-name: move;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+/* Separate items */
+.a1 {
+  animation-delay: 1.4s;
+}
+.a2 {
+  animation-delay: 1.5s;
+}
+.a3 {
+  animation-delay: 1.6s;
+}
+.a4 {
+  animation-delay: 1.7s;
+}
+.a5 {
+  animation-delay: 1.8s;
+}
+.a6 {
+  animation-delay: 1.9s;
+}
+
+/*  Separate items */
+@keyframes move {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* Whole form */
+@keyframes left {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    /* padding: 20px 40px; */
+    width: 440px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+}
+
+@media screen and (max-width: 640px) {
+  @keyframes left {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+
+    100% {
+      opacity: 1;
+      width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 420px) {

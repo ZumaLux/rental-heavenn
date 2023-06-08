@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthForm from "./AuthForm";
 import { useFormContext } from "../../context/formContext";
 import { FaGithub as GithubIcon } from "react-icons/fa";
@@ -17,12 +17,13 @@ const RegisterForm = () => {
   const { isRegisterOpen, closeRegister } = useFormContext();
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
   // REGISTER
   const register = async (e) => {
     e.preventDefault();
     if (currentUser) {
-      console.log("Already logged in!");
+      setMessage("Already logged in!");
       return;
     }
     const user = {
@@ -31,16 +32,16 @@ const RegisterForm = () => {
       role: "user",
     };
     const registerResult = await registerUser(e.target.email.value, e.target.password.value);
-    if (registerResult) {
-      createUserDetails(collection_users, user, registerResult.uid);
+    if (registerResult.user) {
+      createUserDetails(collection_users, user, registerResult.user.uid);
       navigate("/");
-    }
+    } else if (registerResult.message) setMessage(registerResult.message);
   };
 
   // REGISTER - GOOGLE
   const registerWithGoogle = () => {
     if (currentUser) {
-      console.log("Already logged in!");
+      setMessage("Already logged in!");
       return;
     }
     authWithGoogle().then((res) => {
@@ -51,7 +52,6 @@ const RegisterForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
-        navigate("/");
       }
     });
   };
@@ -59,7 +59,7 @@ const RegisterForm = () => {
   // REGISTER - GITHUB
   const registerWithGithub = () => {
     if (currentUser) {
-      console.log("Already logged in!");
+      setMessage("Already logged in!");
       return;
     }
     authWithGithub().then((res) => {
@@ -70,7 +70,6 @@ const RegisterForm = () => {
           role: "user",
         };
         createUserDetails(collection_users, user, res.user.uid);
-        navigate("/");
       }
     });
   };
@@ -112,6 +111,7 @@ const RegisterForm = () => {
       isOpen={isRegisterOpen}
       submitAction={register}
       firstRender={false}
+      message={message}
     />
   );
 };
