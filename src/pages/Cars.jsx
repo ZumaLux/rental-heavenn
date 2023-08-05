@@ -45,7 +45,7 @@ const Cars = () => {
           </div>
           <div className="cars-grid__nav-sort">
             <SortBar
-              sortOptions={["Brand Model", "Price Brand", "Year Brand", "Discount Brand"]}
+              sortOptions={["Brand Model", "Price Brand", "Year Brand"]}
               sortValue={sortValue}
               setSortValue={(value) => setSortValue(value)}
             />
