@@ -123,7 +123,7 @@ const EditCarModal = () => {
     // submit info
     let price = parseFloat(e.target.price.value);
     let discount = parseInt(e.target.discount.value === "" ? 0 : e.target.discount.value);
-    let discountPrice = parseFloat((price - price * (discount / 100)).toFixed(2));
+    let discountPrice = parseFloat(price - price * (discount / 100));
 
     const car = {
       brand: e.target.brand.value,
@@ -137,8 +137,8 @@ const EditCarModal = () => {
       image: e.target.image.value,
       extras: e.target.extras.value,
       discount: discount,
-      price: price,
-      discountPrice: discountPrice,
+      price: price.toFixed(2),
+      discountPrice: discountPrice.toFixed(2),
     };
 
     updateItem(collection_cars, car, editData.id).then((res) => {

@@ -43,7 +43,8 @@ const RentCar = () => {
   const { takenDates } = useFetchRentals(collection_rentals, editData);
 
   const getTotalPrice = useMemo(() => {
-    return getNumberOfDays(startDate, endDate) * editData?.discountPrice;
+    const discPrice = parseFloat(editData?.discountPrice);
+    return getNumberOfDays(startDate, endDate) * discPrice;
   }, [startDate, endDate, editData?.discountPrice]);
 
   const onSubmit = (e) => {
@@ -58,7 +59,7 @@ const RentCar = () => {
       rentedCarId: editData.id,
       rentedCarBrand: editData.brand,
       rentedCarModel: editData.model,
-      totalPrice: getTotalPrice,
+      totalPrice: getTotalPrice.toFixed(2),
     };
 
     addItem(collection_rentals, rental).then((res) => {
