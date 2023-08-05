@@ -74,6 +74,7 @@ const inputFields = [
     name: "Price",
     element: "input",
     type: "number",
+    step: "0.01",
     options: [],
     required: true,
   },
@@ -132,7 +133,7 @@ const AddCarModal = () => {
         window.alert(res.error);
         return;
       } else if (!res.status) return;
-      getSingleItem(collection_cars, res.id).then((res) => {
+      getSingleItem(collection_cars, res.status.id).then((res) => {
         setCarList((current) => [...current, res]);
       });
       console.log("car --> ", car);
@@ -155,6 +156,7 @@ const AddCarModal = () => {
                 name={field.name.toLocaleLowerCase()}
                 placeholder={field.name}
                 required={field.required}
+                step={field.step}
               />
             </div>
           )}

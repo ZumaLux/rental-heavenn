@@ -27,7 +27,7 @@ const Cars = () => {
 
   const { openAddModal } = useModalContext();
 
-  const itemsPerPage = 15;
+  const itemsPerPage = 12;
   const searchedItems = searchItems(searchQuery, carList);
   const sortedItems = sortItems(sortValue, searchedItems);
   const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);

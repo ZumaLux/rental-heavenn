@@ -11,8 +11,8 @@ const useFetch = (
 ) => {
   useEffect(() => {
     const fetchData = async () => {
-      console.log("it runs");
       if (listContext.length > 0) return;
+      console.log("it runs");
       setIsLoading(true);
       try {
         const collectionRef = collection(db, colName);

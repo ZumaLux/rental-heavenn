@@ -83,6 +83,7 @@ const getInputFields = (data) => {
       name: "Price",
       element: "input",
       type: "number",
+      step: "0.01",
       options: [],
       default: data.price,
       required: true,
@@ -143,10 +144,11 @@ const EditCarModal = () => {
     updateItem(collection_cars, car, editData.id).then((res) => {
       if (res.error) {
         window.alert(res.error);
+        return;
       }
-      const itemIndex = carList.indexOf(carList.find((item) => item.id === res.id));
+      const itemIndex = carList.indexOf(carList.find((item) => item.id === res.item.id));
       const updatedList = [...carList];
-      updatedList[itemIndex] = res;
+      updatedList[itemIndex] = res.item;
       setCarList(updatedList);
       console.log("car --> ", res);
     });
@@ -170,6 +172,7 @@ const EditCarModal = () => {
                   placeholder={field.name}
                   defaultValue={field.default}
                   required={field.required}
+                  step={field.step}
                 />
               </div>
             )}

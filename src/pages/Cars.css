@@ -1,7 +1,7 @@
 .cars-grid {
   background: var(--light-blue);
   min-height: 100vh;
-  padding: 1rem 3rem;
+  padding: 1rem 10rem;
 }
 
 .cars-grid__nav {
@@ -27,7 +27,7 @@
 
   /* Custom Values */
   --grid-layout-gap: 1rem;
-  --grid-column-count: 20;
+  --grid-column-count: 15;
   --grid-item--min-width: 20rem;
 
   /* Calculated values.*/
