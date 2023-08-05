@@ -17,7 +17,6 @@ const CalendarComponent = ({ takenDates, setStartDate, setEndDate }) => {
   ]);
 
   useEffect(() => {
-    console.log("dateRange: ", range);
     setStartDate(format(range[0].startDate, "MM/dd/yyyy"));
     setEndDate(format(range[0].endDate, "MM/dd/yyyy"));
   }, [range, setStartDate, setEndDate]);

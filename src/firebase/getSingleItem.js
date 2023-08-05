@@ -6,7 +6,6 @@ const getSingleItem = async (collection, id) => {
     const docRef = doc(db, collection, id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      console.log(docSnap.data());
       return { ...docSnap.data(), id };
     } else {
       console.log("Item does not exist");

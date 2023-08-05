@@ -49,10 +49,7 @@ export async function signOutUser() {
 export async function createUserDetails(path, user, uid) {
   try {
     await setDoc(doc(db, path, uid), { ...user });
-    // console.log("User Details Added Successfully!");
-  } catch (err) {
-    console.log(err.message);
-  }
+  } catch (err) {}
 }
 
 // AUTH WITH GOOGLE

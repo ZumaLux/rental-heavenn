@@ -17,7 +17,6 @@ export default function useSessionStorage(key, initialValue) {
 
   useEffect(() => {
     sessionStorage.setItem(key, value);
-    // console.log("JSON --> " + initialValue);
   }, [key, value]);
   // [key, JSON.stringify(value)])
 

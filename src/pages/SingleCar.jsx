@@ -47,6 +47,7 @@ const SingleCar = () => {
 
   useEffect(() => {
     setEditData(data);
+    window.scroll(0, 0);
   }, [data, setEditData]);
 
   const deleteCar = async () => {
@@ -84,7 +85,7 @@ const SingleCar = () => {
         <div className="single-car__rent-btn-container">
           <div className="rent-price">
             {data.discount > 0 && <s style={{ color: "red" }}>$ {data.price}</s>} $
-            {data.discountPrice}
+            {data.discountPrice} <i>/ day</i>
           </div>
           <div className="rent-btn">
             <Button label="Rent now" onClick={() => handleRent()} />

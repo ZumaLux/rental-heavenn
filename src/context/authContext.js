@@ -14,8 +14,6 @@ const AuthProvider = ({ children }) => {
       if (!user) return setCurrentUser(null);
       const docRef = doc(db, collection_users, user.uid);
       const userDetails = await getDoc(docRef);
-
-      console.log("auth user ", user);
       setCurrentUser({ ...userDetails.data(), uid: user.uid });
     });
   }, []);

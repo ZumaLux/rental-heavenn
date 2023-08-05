@@ -14,7 +14,6 @@ const useFetchRentalDates = (colName = "", data) => {
         const q = query(collectionRef, where("rentedCarId", "==", data?.id));
         const querySnapshot = await getDocs(q);
         let newDateList = [];
-        console.log("get docs ", querySnapshot.docs[0]?.data());
         querySnapshot.docs.map((item) =>
           getDatesInRange(item.data().startDate.seconds, item.data().endDate.seconds).map(
             (dateList) => (newDateList = newDateList.concat(dateList))

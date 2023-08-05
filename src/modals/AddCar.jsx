@@ -136,7 +136,6 @@ const AddCarModal = () => {
       getSingleItem(collection_cars, res.status.id).then((res) => {
         setCarList((current) => [...current, res]);
       });
-      console.log("car --> ", car);
     });
   };
 

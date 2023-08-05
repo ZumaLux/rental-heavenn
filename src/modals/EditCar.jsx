@@ -150,7 +150,6 @@ const EditCarModal = () => {
       const updatedList = [...carList];
       updatedList[itemIndex] = res.item;
       setCarList(updatedList);
-      console.log("car --> ", res);
     });
   };
 

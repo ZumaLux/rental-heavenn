@@ -7,11 +7,8 @@ export async function addItem(path, item) {
     const dataCollectionRef = collection(db, path);
     return await addDoc(dataCollectionRef, item).then((res) => {
       if (res) {
-        // console.log("db response: ", res);
-        console.log("Item Added Successfully!");
         return { status: res, error: null };
       } else {
-        console.log("Adding Item Failed!");
         return { status: null, error: "Adding Item Failed!" };
       }
     });
@@ -25,7 +22,6 @@ export async function updateItem(path, newItem, id) {
   const itemDocRef = doc(db, path, id);
   return await updateDoc(itemDocRef, newItem)
     .then(() => {
-      console.log("Item Updated Successfully!");
       return { item: { ...newItem, id }, error: null };
     })
     .catch((err) => {
@@ -39,7 +35,6 @@ export async function deleteItem(path, item) {
     if (window.confirm(`Do you want to delete ${item.brand} ${item.model}?`)) {
       const itemDocRef = doc(db, path, item.id);
       await deleteDoc(itemDocRef);
-      console.log("Item Deleted!");
       return { confirm: true, error: null };
     } else {
       return { confirm: false, error: null };

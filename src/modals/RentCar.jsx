@@ -68,7 +68,6 @@ const RentCar = () => {
         return;
       }
       if (!rentModalActive.status) return;
-      console.log("car --> ", rental);
     });
   };
 

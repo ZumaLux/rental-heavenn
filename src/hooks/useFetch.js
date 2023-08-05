@@ -12,7 +12,6 @@ const useFetch = (
   useEffect(() => {
     const fetchData = async () => {
       if (listContext.length > 0) return;
-      console.log("it runs");
       setIsLoading(true);
       try {
         const collectionRef = collection(db, colName);
@@ -22,10 +21,8 @@ const useFetch = (
         if (dataList.docs.length === 0) {
           throw new Error("No data found");
         }
-        console.log("fetch data: ", newData);
         setListContext(newData);
       } catch (error) {
-        console.log("Error: ", error.message);
         setError(error.message);
       } finally {
         setIsLoading(false);

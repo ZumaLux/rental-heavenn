@@ -32,10 +32,6 @@ const Cars = () => {
   const sortedItems = sortItems(sortValue, searchedItems);
   const slicedData = sliceData(currentPage, itemsPerPage, sortedItems);
 
-  useEffect(() => {
-    console.log("data=", carList);
-  }, [carList]);
-
   return (
     <div className="page-container">
       <section className="cars-grid">
