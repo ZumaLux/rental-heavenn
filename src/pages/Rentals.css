@@ -1,8 +1,6 @@
 .rentals-table {
   padding: 0rem 3rem;
   overflow-x: auto;
-  /* background: var(--blue-v1); */
-  height: 100vh;
 }
 
 .rentals-table_nav {
