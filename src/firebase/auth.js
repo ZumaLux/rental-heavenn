@@ -30,11 +30,8 @@ export const loginUser = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
     return { success: true, message: "Login successfull" };
   } catch (err) {
-    if (err.code === "auth/user-not-found") {
-      return { success: false, message: "User does not exist!" };
-    }
-    if (err.code === "auth/wrong-password") {
-      return { success: false, message: "Incorrect password!" };
+    if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password") {
+      return { success: false, message: "Incorrect email or password!" };
     }
     return { success: false, message: err.message };
   }

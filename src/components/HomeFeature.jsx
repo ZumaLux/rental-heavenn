@@ -1,7 +1,7 @@
 import React from "react";
-import "./Feature.css";
+import "./HomeFeature.css";
 
-const Feature = ({ title, text, icon }) => {
+const HomeFeature = ({ title, text, icon }) => {
   return (
     <div className="feature">
       <div className="feature__icon">{icon}</div>
@@ -11,4 +11,4 @@ const Feature = ({ title, text, icon }) => {
   );
 };
 
-export default Feature;
+export default HomeFeature;
