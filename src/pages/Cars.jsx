@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Cars.css";
 import useFetch from "../hooks/useFetch";
 import CarCard from "../components/CarCard";
@@ -24,7 +24,6 @@ const Cars = () => {
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
   const { currentUser } = useAuthContext();
-
   const { openAddModal } = useModalContext();
 
   const itemsPerPage = 12;
