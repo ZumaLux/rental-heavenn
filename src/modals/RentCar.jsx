@@ -4,7 +4,7 @@ import { useModalContext } from "../context/modalContext";
 import { addItem } from "../firebase/crud";
 import { collection_rentals } from "../firebase/variables";
 import CalendarComponent from "../components/CalendarComponent";
-import useFetchRentals from "../hooks/useFetchRentals";
+import useFetchRentalDates from "../hooks/useFetchRentalDates";
 import { getNumberOfDays } from "../functions/getNumberOfDays";
 
 const inputFields = [
@@ -40,7 +40,7 @@ const RentCar = () => {
   const { editData } = useModalContext();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const { takenDates } = useFetchRentals(collection_rentals, editData);
+  const { takenDates } = useFetchRentalDates(collection_rentals, editData);
 
   const getTotalPrice = useMemo(() => {
     const discPrice = parseFloat(editData?.discountPrice);
