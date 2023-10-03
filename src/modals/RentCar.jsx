@@ -44,7 +44,7 @@ const RentCar = () => {
 
   const getTotalPrice = useMemo(() => {
     const discPrice = parseFloat(editData?.discountPrice);
-    return getNumberOfDays(startDate, endDate) * discPrice;
+    return (getNumberOfDays(startDate, endDate) * discPrice).toFixed(2);
   }, [startDate, endDate, editData?.discountPrice]);
 
   const onSubmit = (e) => {
