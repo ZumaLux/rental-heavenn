@@ -22,11 +22,9 @@ const ModalProvider = ({ children }) => {
   // EDIT
   const openEditModal = () => {
     setEditModalActive(true);
-    // setEditData(data);
   };
   const closeEditModal = () => {
     setEditModalActive(false);
-    // setEditData(null);
   };
 
   // RENT

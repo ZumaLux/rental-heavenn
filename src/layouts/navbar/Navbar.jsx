@@ -25,19 +25,6 @@ const Navbar = () => {
     allowScroll();
   };
 
-  // const test = () => {
-  //   const list = [];
-  //   navLinks.forEach((link) => {
-  //     if (
-  //       currentUser?.role === link?.accessRole ||
-  //       link?.accessRole === "user" ||
-  //       (!currentUser && link?.accessRole === "none")
-  //     )
-  //       list.push(link);
-  //   });
-  //   return list;
-  // };
-
   return (
     <header>
       <nav className={`nav ${navActive && "active"}`}>

@@ -28,7 +28,7 @@ const Modal = ({
 
   const handleClose = useCallback(() => {
     setShowModal(false);
-    //adding timeout because of the animation's length -  300ms
+    // adding timeout because of the animation's length -  300ms
     setTimeout(() => {
       onClose();
     }, 300);

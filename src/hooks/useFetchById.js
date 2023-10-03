@@ -11,7 +11,6 @@ const useFetchById = (colName = "", docId = "") => {
     setIsLoading(true);
     try {
       const docRef = doc(db, colName, docId);
-      // throw new Error("Stefias is cringe!");
       const unsubscribe = onSnapshot(docRef, (snapshot) => {
         setData({ ...snapshot.data(), id: snapshot.id });
       });
