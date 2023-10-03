@@ -454,9 +454,9 @@ export default Modal;
 
 ![Home](screenshots/RH_Home.jpg)
 ![Catalog](screenshots/RH_Catalog.jpg)
+![Pagination](screenshots/RH_Pagination.jpg)
 ![Car Preview](screenshots/RH_CarPreview.jpg)
 ![Edit Popup](screenshots/RH_EditPopup.jpg)
-![Rentals List](screenshots/RH_RentalsList.jpg)
 ![Rent Popup](screenshots/RH_RentPopup.jpg)
+![Rentals List](screenshots/RH_RentalsList.jpg)
 ![Login](screenshots/RH_Login.jpg)
-![Pagination](screenshots/RH_Pagination.jpg)
