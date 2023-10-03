@@ -59,7 +59,7 @@ Admin user
 
 ## Folder Structure
 
-![Project Structure](screenshots/RH_ProjectStructure)
+![Project Structure](screenshots/RH_ProjectStructure.jpg)
 
 ## Some Code
 
