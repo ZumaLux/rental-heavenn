@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import "./Cars.css";
 import useFetch from "../hooks/useFetch";
-import CarCard from "../components/CarCard";
-import SearchBar from "../components/SearchBar";
-import SortBar from "../components/SortBar";
-import { searchItems, sortItems } from "../functions/sortAndSearch";
 import useSessionStorage from "../hooks/useSessionStorage";
-import Pagination from "../components/Pagination";
-import { sliceData } from "../functions/sliceData";
+import { CarCard, SearchBar, SortBar, Pagination, Sidebar, Loading } from "../components";
 import { collection_cars } from "../firebase/variables";
-import Sidebar from "../components/Sidebar";
+import { searchItems, sortItems } from "../functions/sortAndSearch";
+import { sliceData } from "../functions/sliceData";
 import { useModalContext } from "../context/modalContext";
-import { HiPlus as PlusIcon } from "react-icons/hi";
 import { useCarContext } from "../context/carContext";
 import { useAuthContext } from "../context/authContext";
-import Loading from "../components/Loading";
+import { HiPlus as PlusIcon } from "react-icons/hi";
 import Error from "../modals/Error";
 
 const Cars = () => {

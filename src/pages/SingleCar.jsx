@@ -1,23 +1,22 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import { Sidebar, Button } from "../components";
+import useFetchById from "../hooks/useFetchById";
+import "./SingleCar.css";
+import Error from "../modals/Error";
+import { collection_cars } from "../firebase/variables";
+import { deleteItem } from "../firebase/crud";
 import { useModalContext } from "../context/modalContext";
+import { useCarContext } from "../context/carContext";
+import { useAuthContext } from "../context/authContext";
 import { AiFillEdit as EditIcon } from "react-icons/ai";
 import { AiFillDelete as DeleteIcon } from "react-icons/ai";
-import useFetchById from "../hooks/useFetchById";
-import { collection_cars } from "../firebase/variables";
-import Button from "../components/Button";
-import "./SingleCar.css";
-import { deleteItem } from "../firebase/crud";
-import { useCarContext } from "../context/carContext";
 import { AiTwotoneCalendar as CalenadrIcon } from "react-icons/ai";
 import { BsFillFuelPumpFill as FuelIcon } from "react-icons/bs";
 import { BsPersonFill as SeatIcon } from "react-icons/bs";
 import { TbManualGearbox as GearboxIcon } from "react-icons/tb";
 import { GiCarDoor as DoorIcon } from "react-icons/gi";
 import { TbAirConditioning as AcIcon } from "react-icons/tb";
-import { useAuthContext } from "../context/authContext";
-import Error from "../modals/Error";
 
 const SingleCar = () => {
   const { id } = useParams();

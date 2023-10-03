@@ -10,7 +10,6 @@ const CalendarComponent = ({ takenDates, setStartDate, setEndDate }) => {
   const [range, setRange] = useState([
     {
       startDate: new Date(),
-      // endDate: addDays(new Date(), 7),
       endDate: new Date(),
       key: "selection",
     },

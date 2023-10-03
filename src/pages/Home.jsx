@@ -1,12 +1,11 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import HomeFeature from "../components/HomeFeature";
+import { HomeFeature, Button } from "../components";
 import { AiFillCar as CarIcon } from "react-icons/ai";
 import { FaRegMoneyBillAlt as MoneyIcon } from "react-icons/fa";
 import { GiClick as ClickIcon } from "react-icons/gi";
 import jeep from "./../assets/jeep.jpg";
-import Button from "../components/Button";
 
 const Home = () => {
   const navigate = useNavigate();

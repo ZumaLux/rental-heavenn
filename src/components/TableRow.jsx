@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import "./TableRow.css";
 import { convertToDate } from "../functions/convertToDate";
+import { getRentalStatus } from "../functions/getRentalStatus";
 import { CiEdit as EditIcon } from "react-icons/ci";
 import { MdDeleteOutline as DeleteIcon } from "react-icons/md";
 import { GrView as VieweIcon } from "react-icons/gr";
-import { getRentalStatus } from "../functions/getRentalStatus";
 
 const TableRow = ({ data }) => {
   const rentalStatus = getRentalStatus(data.startDate.seconds, data.endDate.seconds);

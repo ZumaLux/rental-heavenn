@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import TableRow from "../components/TableRow";
+import { TableRow, SearchBar, Loading } from "../components";
 import useFetch from "../hooks/useFetch";
 import { collection_rentals } from "../firebase/variables";
 import { useRentalContext } from "../context/rentalContext";
 import "./Rentals.css";
 import { CgArrowsV as ArrowsIcon } from "react-icons/cg";
-import SearchBar from "../components/SearchBar";
 import { searchItems, sortItems } from "../functions/sortAndSearch";
 import Error from "../modals/Error";
-import Loading from "../components/Loading";
 
 const Rentals = () => {
   const { rentalList, setRentalList, isLoading, setIsLoading, error, setError } =
