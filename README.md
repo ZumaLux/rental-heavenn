@@ -12,7 +12,7 @@ HTML, CSS, React JS, Firebase
 
 ## Demo
 
-[Rental Heaven demo](zuma-rental-heavenn.netlify.app)
+[Rental Heaven demo](https://zuma-rental-heavenn.netlify.app)
 
 #### Demo Credentials
 
