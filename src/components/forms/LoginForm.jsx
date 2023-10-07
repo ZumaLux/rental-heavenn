@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import AuthForm from "./AuthForm";
-import { useFormContext } from "../../context/formContext";
 import { FaGithub as GithubIcon } from "react-icons/fa";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +7,8 @@ import { authWithGithub, authWithGoogle, createUserDetails, loginUser } from "..
 import { collection_users } from "../../firebase/variables";
 import { useAuthContext } from "../../context/authContext";
 
-const LoginForm = () => {
-  const { isLoginOpen, closeLogin } = useFormContext();
-  const [isFirstRender, setIsFirstRender] = useState(true);
+const LoginForm = ({ isActive, toggleRegisterForm }) => {
+  const [isFirstRender, setIsFirstRender] = useState(true); // run animation only the first time
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
@@ -65,7 +63,7 @@ const LoginForm = () => {
 
   const toggleForm = () => {
     setIsFirstRender(false);
-    closeLogin();
+    toggleRegisterForm();
   };
 
   const bodyContent = (
@@ -96,7 +94,7 @@ const LoginForm = () => {
       body={bodyContent}
       footer={footerContent}
       buttonText="LOGIN"
-      isOpen={isLoginOpen}
+      isOpen={isActive}
       firstRender={isFirstRender}
       submitAction={login}
       message={message}

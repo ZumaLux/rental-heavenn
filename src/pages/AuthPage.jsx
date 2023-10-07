@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./AuthPage.css";
 import LoginForm from "../components/forms/LoginForm";
 import RegisterForm from "../components/forms/RegisterForm";
-import { useFormContext } from "../context/formContext";
 
 const AuthPage = () => {
-  const { closeRegister } = useFormContext();
+  const [isLoginActive, setIsLoginActive] = useState(true);
+  const [isRegisterActive, setIsRegisterActive] = useState(false);
 
-  useEffect(() => {
-    // resets back to login form
-    closeRegister();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const toggleLoginForm = () => {
+    setIsRegisterActive(false);
+    setIsLoginActive(true);
+  };
+  const toggleRegisterForm = () => {
+    setIsLoginActive(false);
+    setIsRegisterActive(true);
+  };
 
   return (
     <div className="page-container">
       <div className="auth-page">
         <div className="auth-page__form">
-          <LoginForm />
-          <RegisterForm />
+          <LoginForm isActive={isLoginActive} toggleRegisterForm={toggleRegisterForm} />
+          <RegisterForm isActive={isRegisterActive} toggleLoginForm={toggleLoginForm} />
         </div>
         <div className="auth-page__img"></div>
       </div>

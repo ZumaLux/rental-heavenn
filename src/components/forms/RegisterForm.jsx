@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import AuthForm from "./AuthForm";
-import { useFormContext } from "../../context/formContext";
 import { FaGithub as GithubIcon } from "react-icons/fa";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import {
@@ -13,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { collection_users } from "../../firebase/variables";
 import { useAuthContext } from "../../context/authContext";
 
-const RegisterForm = () => {
-  const { isRegisterOpen, closeRegister } = useFormContext();
+const RegisterForm = ({ isActive, toggleLoginForm }) => {
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
@@ -75,7 +73,7 @@ const RegisterForm = () => {
   };
 
   const toggleForm = () => {
-    closeRegister();
+    toggleLoginForm();
   };
 
   const bodyContent = (
@@ -108,7 +106,7 @@ const RegisterForm = () => {
       body={bodyContent}
       footer={footerContent}
       buttonText="SIGN UP"
-      isOpen={isRegisterOpen}
+      isOpen={isActive}
       submitAction={register}
       firstRender={false}
       message={message}

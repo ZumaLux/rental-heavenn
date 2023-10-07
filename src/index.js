@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/authContext";
-import FormProvider from "./context/formContext";
 import CarProvider from "./context/carContext";
 import RentalProvider from "./context/rentalContext";
 
@@ -15,9 +14,7 @@ root.render(
       <BrowserRouter>
         <CarProvider>
           <RentalProvider>
-            <FormProvider>
-              <App />
-            </FormProvider>
+            <App />
           </RentalProvider>
         </CarProvider>
       </BrowserRouter>
