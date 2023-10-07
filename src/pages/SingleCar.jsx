@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Sidebar, Button } from "../components";
 import useFetchById from "../hooks/useFetchById";
@@ -6,7 +6,6 @@ import "./SingleCar.css";
 import Error from "../modals/Error";
 import { collection_cars } from "../firebase/variables";
 import { deleteItem } from "../firebase/crud";
-import { useModalContext } from "../context/modalContext";
 import { useCarContext } from "../context/carContext";
 import { useAuthContext } from "../context/authContext";
 import { AiFillEdit as EditIcon } from "react-icons/ai";
@@ -22,14 +21,14 @@ import EditCar from "../modals/EditCar";
 
 const SingleCar = () => {
   const { id } = useParams();
-  const { openEditModal } = useModalContext();
   const { currentUser } = useAuthContext();
   const { carList, setCarList, setSingleCar } = useCarContext();
   const { data, error } = useFetchById(collection_cars, id);
-  const { openRentModal } = useModalContext();
   const headerRef = useRef();
   const navigate = useNavigate();
   const fields = ["brand", "model", "year", "fuel", "gearbox", "doors", "seats", "ac", "extras"];
+  const [isEditModalActive, setIsEditModalActive] = useState(false);
+  const [isRentModalActive, setIsRentModalActive] = useState(false);
 
   useEffect(() => {
     const shrinkHeaderOnScroll = () => {
@@ -68,7 +67,7 @@ const SingleCar = () => {
     if (currentUser?.role === "admin") {
       alert("As an admin you are unable to use this feature. Please use another account!");
     } else if (currentUser) {
-      openRentModal();
+      setIsRentModalActive(true);
     } else {
       if (window.confirm("You need to login first! Go to login?")) {
         navigate("/auth");
@@ -78,8 +77,8 @@ const SingleCar = () => {
 
   return (
     <div className="page-container">
-      <EditCar />
-      <RentCar />
+      <EditCar isActive={isEditModalActive} setActive={setIsEditModalActive} />
+      <RentCar isActive={isRentModalActive} setActive={setIsRentModalActive} />
       <Error error={error} />
       <div ref={headerRef} className="single-car__header">
         <h2 className="single-car__header-title">
@@ -168,7 +167,7 @@ const SingleCar = () => {
         btnList={[
           {
             label: "Edit Car",
-            onClick: () => openEditModal(),
+            onClick: () => setIsEditModalActive(true),
             show: currentUser?.role === "admin",
             icon: <EditIcon />,
             color: "orange",

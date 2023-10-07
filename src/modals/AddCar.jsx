@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "./Modal";
-import { useModalContext } from "../context/modalContext";
 import { addItem } from "../firebase/crud";
 import { collection_cars } from "../firebase/variables";
 import { useCarContext } from "../context/carContext";
@@ -102,8 +101,7 @@ function getYears() {
   return years;
 }
 
-const AddCarModal = () => {
-  const { addModalActive, closeAddModal } = useModalContext();
+const AddCarModal = ({ isActive, setActive }) => {
   const { setCarList } = useCarContext();
 
   const onSubmit = (e) => {
@@ -194,8 +192,8 @@ const AddCarModal = () => {
       subtitle="Please fill the car data"
       body={modalBody}
       buttonLabel="Add"
-      isOpen={addModalActive}
-      onClose={closeAddModal}
+      isOpen={isActive}
+      onClose={() => setActive(false)}
       onSubmit={onSubmit}
     />
   );

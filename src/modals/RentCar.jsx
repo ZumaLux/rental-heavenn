@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import Modal from "./Modal";
-import { useModalContext } from "../context/modalContext";
 import { addItem } from "../firebase/crud";
 import { collection_rentals } from "../firebase/variables";
 import CalendarComponent from "../components/CalendarComponent";
@@ -36,8 +35,7 @@ const inputFields = [
   },
 ];
 
-const RentCar = () => {
-  const { rentModalActive, closeRentModal } = useModalContext();
+const RentCar = ({ isActive, setActive }) => {
   const { singleCar } = useCarContext();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -68,7 +66,7 @@ const RentCar = () => {
         window.alert(res.error);
         return;
       }
-      if (!rentModalActive.status) return;
+      if (!isActive.status) return;
     });
   };
 
@@ -132,8 +130,8 @@ const RentCar = () => {
       subtitle="Please fill the required information"
       body={modalBody}
       buttonLabel={`Rent $${getTotalPrice}`}
-      isOpen={rentModalActive}
-      onClose={closeRentModal}
+      isOpen={isActive}
+      onClose={() => setActive(false)}
       onSubmit={onSubmit}
     />
   );

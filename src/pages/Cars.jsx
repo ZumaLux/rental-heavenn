@@ -5,7 +5,6 @@ import { collection_cars } from "../firebase/variables";
 import useFetch from "../hooks/useFetch";
 import useSessionStorage from "../hooks/useSessionStorage";
 import { searchItems, sortItems, sliceData } from "../functions/dataActions";
-import { useModalContext } from "../context/modalContext";
 import { useCarContext } from "../context/carContext";
 import { useAuthContext } from "../context/authContext";
 import { HiPlus as PlusIcon } from "react-icons/hi";
@@ -15,10 +14,10 @@ import AddCar from "../modals/AddCar";
 const Cars = () => {
   const { carList, setCarList, isLoading, setIsLoading, error, setError } = useCarContext();
   const { currentUser } = useAuthContext();
-  const { openAddModal } = useModalContext();
   useFetch(collection_cars, carList, setCarList, setIsLoading, setError);
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
+  const [isAddModalActive, setIsAddModalActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const itemsPerPage = 12;
@@ -28,7 +27,7 @@ const Cars = () => {
 
   return (
     <div className="page-container">
-      <AddCar />
+      <AddCar isActive={isAddModalActive} setActive={(state) => setIsAddModalActive(state)} />
       <section className="cars-grid">
         <div className="cars-grid__nav">
           <div className="cars-grid__nav-search">
@@ -71,7 +70,7 @@ const Cars = () => {
         btnList={[
           {
             label: "Add Car",
-            onClick: () => openAddModal(),
+            onClick: () => setIsAddModalActive(true),
             show: currentUser?.role === "admin",
             icon: <PlusIcon />,
             color: "orange",

@@ -5,7 +5,6 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/authContext";
 import FormProvider from "./context/formContext";
-import ModalProvider from "./context/modalContext";
 import CarProvider from "./context/carContext";
 import RentalProvider from "./context/rentalContext";
 
@@ -16,11 +15,9 @@ root.render(
       <BrowserRouter>
         <CarProvider>
           <RentalProvider>
-            <ModalProvider>
-              <FormProvider>
-                <App />
-              </FormProvider>
-            </ModalProvider>
+            <FormProvider>
+              <App />
+            </FormProvider>
           </RentalProvider>
         </CarProvider>
       </BrowserRouter>
