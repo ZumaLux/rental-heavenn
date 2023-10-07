@@ -116,8 +116,8 @@ function getYears() {
 }
 
 const EditCarModal = () => {
-  const { editModalActive, closeEditModal, editData } = useModalContext();
-  const { carList, setCarList } = useCarContext();
+  const { editModalActive, closeEditModal } = useModalContext();
+  const { carList, setCarList, singleCar } = useCarContext();
 
   const onSubmit = (e) => {
     // submit info
@@ -125,6 +125,7 @@ const EditCarModal = () => {
     let discount = parseInt(e.target.discount.value === "" ? 0 : e.target.discount.value);
     let discountPrice = parseFloat(price - price * (discount / 100));
 
+    // create item object
     const car = {
       brand: e.target.brand.value,
       model: e.target.model.value,
@@ -141,7 +142,7 @@ const EditCarModal = () => {
       discountPrice: discountPrice.toFixed(2),
     };
 
-    updateItem(collection_cars, car, editData.id).then((res) => {
+    updateItem(collection_cars, car, singleCar.id).then((res) => {
       if (res.error) {
         window.alert(res.error);
         return;
@@ -155,8 +156,8 @@ const EditCarModal = () => {
 
   const modalBody = (
     <div className="fields-container">
-      {editData &&
-        getInputFields(editData).map((field) => (
+      {singleCar &&
+        getInputFields(singleCar).map((field) => (
           <div className="fields" key={field.name}>
             {field.element === "input" && (
               <div className="field-block">

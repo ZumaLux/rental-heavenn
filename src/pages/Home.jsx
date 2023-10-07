@@ -25,7 +25,7 @@ const Home = () => {
       <section className="home-features">
         <HomeFeature
           title="Quality cars"
-          text="We have many different types of vehicles to fit your taste. And we keep them in top shape."
+          text="We have many different types of vehicles to fit your taste. And we keep them in top shape"
           icon={<CarIcon />}
         />
         <HomeFeature

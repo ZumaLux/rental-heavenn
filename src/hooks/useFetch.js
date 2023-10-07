@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { db } from "../firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 
+// Extracts the given collection from the database and sends it to the global context
 const useFetch = (
   colName = "",
   listContext = [],

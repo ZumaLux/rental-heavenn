@@ -11,19 +11,19 @@ import RentalProvider from "./context/rentalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <CarProvider>
-          <RentalProvider>
-            <ModalProvider>
-              <FormProvider>
-                <App />
-              </FormProvider>
-            </ModalProvider>
-          </RentalProvider>
-        </CarProvider>
-      </BrowserRouter>
-    </AuthProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AuthProvider>
+    <BrowserRouter>
+      <CarProvider>
+        <RentalProvider>
+          <ModalProvider>
+            <FormProvider>
+              <App />
+            </FormProvider>
+          </ModalProvider>
+        </RentalProvider>
+      </CarProvider>
+    </BrowserRouter>
+  </AuthProvider>
+  //</React.StrictMode>
 );

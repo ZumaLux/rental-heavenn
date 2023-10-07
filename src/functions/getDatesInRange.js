@@ -1,5 +1,6 @@
 import moment from "moment/moment";
 
+// returns list of calendar dates
 export const getDatesInRange = (start, end) => {
   // convert epoch(date in seconds) to date
   const startDate = moment(start * 1000);

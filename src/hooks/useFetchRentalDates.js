@@ -3,13 +3,14 @@ import { db } from "../firebase/config";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getDatesInRange } from "../functions/getDatesInRange";
 
+// gets all dates that the given car is already rented
 const useFetchRentalDates = (colName, data) => {
   const [takenDates, setTakenDates] = useState([]);
 
   useEffect(() => {
+    if (!data?.length || !colName) return;
     const fetchData = async () => {
       try {
-        if (!data || !colName) return;
         const collectionRef = collection(db, colName);
         const q = query(collectionRef, where("rentedCarId", "==", data?.id));
         const querySnapshot = await getDocs(q);

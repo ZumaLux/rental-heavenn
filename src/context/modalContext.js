@@ -1,14 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 
-export const ModalContext = createContext();
+const ModalContext = createContext();
 
 const ModalProvider = ({ children }) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const [addModalActive, setAddModalActive] = useState(false);
-
   const [editModalActive, setEditModalActive] = useState(false);
-  const [editData, setEditData] = useState(null);
-
   const [rentModalActive, setRentModalActive] = useState(false);
 
   // ADD
@@ -40,13 +37,11 @@ const ModalProvider = ({ children }) => {
       value={{
         addModalActive,
         editModalActive,
-        editData,
         rentModalActive,
         openAddModal,
         closeAddModal,
         openEditModal,
         closeEditModal,
-        setEditData,
         openRentModal,
         closeRentModal,
       }}

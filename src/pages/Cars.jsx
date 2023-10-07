@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import "./Cars.css";
-import useFetch from "../hooks/useFetch";
-import useSessionStorage from "../hooks/useSessionStorage";
 import { CarCard, SearchBar, SortBar, Pagination, Sidebar, Loading } from "../components";
 import { collection_cars } from "../firebase/variables";
-import { searchItems, sortItems } from "../functions/sortAndSearch";
-import { sliceData } from "../functions/sliceData";
+import useFetch from "../hooks/useFetch";
+import useSessionStorage from "../hooks/useSessionStorage";
+import { searchItems, sortItems, sliceData } from "../functions/dataActions";
 import { useModalContext } from "../context/modalContext";
 import { useCarContext } from "../context/carContext";
 import { useAuthContext } from "../context/authContext";
 import { HiPlus as PlusIcon } from "react-icons/hi";
 import Error from "../modals/Error";
+import AddCar from "../modals/AddCar";
 
 const Cars = () => {
   const { carList, setCarList, isLoading, setIsLoading, error, setError } = useCarContext();
-  useFetch(collection_cars, carList, setCarList, setIsLoading, setError);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
-  const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
   const { currentUser } = useAuthContext();
   const { openAddModal } = useModalContext();
+  useFetch(collection_cars, carList, setCarList, setIsLoading, setError);
+  const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
+  const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const itemsPerPage = 12;
   const searchedItems = searchItems(searchQuery, carList);
@@ -28,6 +28,7 @@ const Cars = () => {
 
   return (
     <div className="page-container">
+      <AddCar />
       <section className="cars-grid">
         <div className="cars-grid__nav">
           <div className="cars-grid__nav-search">

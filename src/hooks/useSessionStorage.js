@@ -10,6 +10,7 @@ function getSavedValue(key, initialValue) {
   return initialValue;
 }
 
+// Accepts and sets the given key value pair to the session storage
 export default function useSessionStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     return getSavedValue(key, initialValue);

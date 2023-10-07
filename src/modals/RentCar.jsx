@@ -6,6 +6,7 @@ import { collection_rentals } from "../firebase/variables";
 import CalendarComponent from "../components/CalendarComponent";
 import useFetchRentalDates from "../hooks/useFetchRentalDates";
 import { getNumberOfDays } from "../functions/getNumberOfDays";
+import { useCarContext } from "../context/carContext";
 
 const inputFields = [
   {
@@ -37,15 +38,15 @@ const inputFields = [
 
 const RentCar = () => {
   const { rentModalActive, closeRentModal } = useModalContext();
-  const { editData } = useModalContext();
+  const { singleCar } = useCarContext();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const { takenDates } = useFetchRentalDates(collection_rentals, editData);
+  const { takenDates } = useFetchRentalDates(collection_rentals, singleCar);
 
   const getTotalPrice = useMemo(() => {
-    const discPrice = parseFloat(editData?.discountPrice);
+    const discPrice = parseFloat(singleCar?.discountPrice);
     return (getNumberOfDays(startDate, endDate) * discPrice).toFixed(2);
-  }, [startDate, endDate, editData?.discountPrice]);
+  }, [startDate, endDate, singleCar?.discountPrice]);
 
   const onSubmit = (e) => {
     // submit info
@@ -56,10 +57,10 @@ const RentCar = () => {
       customerPhone: e.target.phone.value,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
-      rentedCarId: editData.id,
-      rentedCarBrand: editData.brand,
-      rentedCarModel: editData.model,
-      totalPrice: getTotalPrice.toFixed(2),
+      rentedCarId: singleCar.id,
+      rentedCarBrand: singleCar.brand,
+      rentedCarModel: singleCar.model,
+      totalPrice: getTotalPrice,
     };
 
     addItem(collection_rentals, rental).then((res) => {

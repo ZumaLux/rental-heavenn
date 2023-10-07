@@ -4,9 +4,6 @@ import { Home, Cars, SingleCar, AuthPage, Contacts, Rentals } from "./pages";
 import ProtectedRoutes from "./layouts/navbar/ProtectedRoutes";
 import Navbar from "./layouts/navbar/Navbar";
 import Footer from "./layouts/footer/Footer";
-import AddCar from "./modals/AddCar";
-import EditCar from "./modals/EditCar";
-import RentCar from "./modals/RentCar";
 
 function App() {
   return (
@@ -22,10 +19,7 @@ function App() {
           <Route path="/rentals" element={<Rentals />} />
         </Route>
       </Routes>
-      <AddCar />
-      <EditCar />
       <Footer />
-      <RentCar />
     </>
   );
 }

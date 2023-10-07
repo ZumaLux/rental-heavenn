@@ -2,6 +2,7 @@ import { useRef } from "react";
 
 const safeDocument = typeof document !== "undefined" ? document : {};
 
+// Makes page unscrollable while a certain mini window is opened
 const useBlockScroll = () => {
   const scrollBlocked = useRef();
   const html = safeDocument.documentElement;

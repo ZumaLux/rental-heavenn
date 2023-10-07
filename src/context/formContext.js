@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-export const FormContext = createContext();
+const FormContext = createContext();
 
 const FormProvider = ({ children }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(true);

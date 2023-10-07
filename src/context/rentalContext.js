@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-export const RentalContext = createContext();
+const RentalContext = createContext();
 
 const RentalProvider = ({ children }) => {
   const [rentalList, setRentalList] = useState([]);

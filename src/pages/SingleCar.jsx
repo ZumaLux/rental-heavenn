@@ -17,12 +17,14 @@ import { BsPersonFill as SeatIcon } from "react-icons/bs";
 import { TbManualGearbox as GearboxIcon } from "react-icons/tb";
 import { GiCarDoor as DoorIcon } from "react-icons/gi";
 import { TbAirConditioning as AcIcon } from "react-icons/tb";
+import RentCar from "../modals/RentCar";
+import EditCar from "../modals/EditCar";
 
 const SingleCar = () => {
   const { id } = useParams();
-  const { openEditModal, setEditData } = useModalContext();
+  const { openEditModal } = useModalContext();
   const { currentUser } = useAuthContext();
-  const { carList, setCarList } = useCarContext();
+  const { carList, setCarList, setSingleCar } = useCarContext();
   const { data, error } = useFetchById(collection_cars, id);
   const { openRentModal } = useModalContext();
   const headerRef = useRef();
@@ -45,9 +47,9 @@ const SingleCar = () => {
   }, []);
 
   useEffect(() => {
-    setEditData(data);
+    setSingleCar(data);
     window.scroll(0, 0);
-  }, [data, setEditData]);
+  }, [data, setSingleCar]);
 
   const deleteCar = async () => {
     await deleteItem(collection_cars, data).then((res) => {
@@ -76,6 +78,8 @@ const SingleCar = () => {
 
   return (
     <div className="page-container">
+      <EditCar />
+      <RentCar />
       <Error error={error} />
       <div ref={headerRef} className="single-car__header">
         <h2 className="single-car__header-title">

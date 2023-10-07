@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
 
-export const CarContext = createContext();
+const CarContext = createContext();
 
 const CarProvider = ({ children }) => {
   const [carList, setCarList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [singleCar, setSingleCar] = useState();
 
   return (
     <CarContext.Provider
@@ -13,9 +14,11 @@ const CarProvider = ({ children }) => {
         carList,
         isLoading,
         error,
+        singleCar,
         setCarList,
         setIsLoading,
         setError,
+        setSingleCar,
       }}
     >
       {children}
