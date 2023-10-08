@@ -9,9 +9,8 @@ import { searchItems, sortItems } from "../functions/sortAndSearch";
 import Error from "../modals/Error";
 
 const Rentals = () => {
-  const { rentalList, setRentalList, isLoading, setIsLoading, error, setError } =
-    useRentalContext();
-  useFetch(collection_rentals, rentalList, setRentalList, setIsLoading, setError);
+  const { rentalList, setRentalList } = useRentalContext();
+  const { isLoading, error } = useFetch(collection_rentals, rentalList, setRentalList);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [orderBy, setOrderBy] = useState("default");

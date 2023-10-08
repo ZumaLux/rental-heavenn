@@ -4,18 +4,12 @@ const RentalContext = createContext();
 
 const RentalProvider = ({ children }) => {
   const [rentalList, setRentalList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   return (
     <RentalContext.Provider
       value={{
         rentalList,
-        isLoading,
-        error,
         setRentalList,
-        setIsLoading,
-        setError,
       }}
     >
       {children}

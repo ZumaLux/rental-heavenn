@@ -12,9 +12,9 @@ import Error from "../modals/Error";
 import AddCar from "../modals/AddCar";
 
 const Cars = () => {
-  const { carList, setCarList, isLoading, setIsLoading, error, setError } = useCarContext();
+  const { carList, setCarList } = useCarContext();
   const { currentUser } = useAuthContext();
-  useFetch(collection_cars, carList, setCarList, setIsLoading, setError);
+  const { isLoading, error } = useFetch(collection_cars, carList, setCarList);
   const [sortValue, setSortValue] = useSessionStorage("car-sort-by", "default");
   const [currentPage, setCurrentPage] = useSessionStorage("car-current-page", 1);
   const [isAddModalActive, setIsAddModalActive] = useState(false);
