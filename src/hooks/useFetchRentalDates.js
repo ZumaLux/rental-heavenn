@@ -8,13 +8,15 @@ const useFetchRentalDates = (colName, data) => {
   const [takenDates, setTakenDates] = useState([]);
 
   useEffect(() => {
-    if (!data?.length || !colName) return;
+    if (!data || !colName) return;
     const fetchData = async () => {
       try {
         const collectionRef = collection(db, colName);
+        // returns all rentings on the same car
         const q = query(collectionRef, where("rentedCarId", "==", data?.id));
         const querySnapshot = await getDocs(q);
         let newDateList = [];
+        // generates new list with all taken dates for the car
         querySnapshot.docs.map((item) =>
           getDatesInRange(item.data().startDate.seconds, item.data().endDate.seconds).map(
             (dateList) => (newDateList = newDateList.concat(dateList))
